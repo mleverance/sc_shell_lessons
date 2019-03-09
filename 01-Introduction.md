@@ -17,6 +17,7 @@ Mary Leverance
   - Type along with instructors to learn by doing
   - Test your understanding with exercises 
 - Collaborative note-taking on the etherpad
+  - Everyone welcome to add notes or questions
   - If you're already familiar with a concept, welcome to help out by adding notes to the etherpad
   - https://pad.carpentries.org/2019-03-18-uark
 - Further practice
