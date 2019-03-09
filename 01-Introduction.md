@@ -32,11 +32,9 @@ Mary Leverance
 
 # Ice Breaker
 - Let's take a couple minutes to get to know each other
-- Share your name and department
-- Three words about yourself - can be discipline related, hobby, favorite food, tv - anything that describes you
-- My three words: preservation - puns - dark chocolate
-
-
+- Share your name and college/department
+- Three words about yourself - can be discipline related, hobby, favorite food, tv - anything that you feel describes you
+- My three words: preservation - puns - tea
 
 
 # Files
@@ -53,9 +51,7 @@ In the lesson, you will find out how to access the data in this folder.
 >
 > Some computers include a default Unix Shell program. 
 > The steps below describe some methods for identifying and opening a Unix Shell program if you already have one installed. 
-> There are also options for identifying and downloading a Unix Shell program, a Linux/UNIX emulator, or a program to access a Unix Shell on a server. 
->
-> If none of the options below address your circumstances, try an online search for: Unix shell [your computer model] [your operating system].
+
 >
 > ### Linux
 > The default Unix Shell for Linux operating systems is usually Bash.
