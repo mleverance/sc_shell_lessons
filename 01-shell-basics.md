@@ -47,14 +47,40 @@ prints the output of your command on the screen, and waits for you to enter anot
  
 ### The Shell
 The Shell is a program which runs other programs rather than doing calculations itself.
-The most popular Unix shell is Bash, (the Bourne Again SHell --- so-called because 
+The most popular Unix shell is Bash, (the Bourne Again SHell ---  
 it's derived from a shell written by Stephen Bourne).
 Bash is the default shell on most modern implementations of Unix
 and in most packages that provide Unix-like tools for Windows.
 
+### Is it difficult?
+
+It is a different model of interacting than a GUI, and that 
+will take some effort - and some time - to learn. A GUI 
+presents you with choices and you select one. With a **command line interface** (CLI) the choices are combinations 
+of commands and parameters, more like words in a language than buttons on a screen. They
+are not presented to you so
+you must learn a few, like learning some vocabulary in a new language. But a small 
+number of commands gets you a long way, and we'll cover those essential few today.
+
+### Flexibility and automation 
+
+The grammar of a shell allows you to combine existing tools into powerful
+pipelines and handle large volumes of data automatically. Sequences of
+commands can be written into a *script*, improving the reproducibility of 
+workflows and allowing you to repeat them easily.
+
+In addition, the command line is often the easiest way to interact with remote machines and supercomputers.
+Familiarity with the shell is near essential to run a variety of specialized tools and resources
+including high-performance computing systems.
+As clusters and cloud computing systems become more popular for scientific data crunching,
+being able to interact with the shell is becoming a necessary skill.
+We can build on the command-line skills covered here
+to tackle a wide range of scientific questions and computational challenges.
+
+
 ### What does it look like?
 
-A typical shell window looks something like:
+A typical shell window looks like:
 
 ~~~
 SHOW MY SHELL WINDOW
@@ -117,27 +143,3 @@ and capitalization are important!). You can change the prompt too, if you like.
 > the space between `ls` and `-F`. 
 {: .callout}
 
-### Is it difficult?
-
-It is a different model of interacting than a GUI, and that 
-will take some effort - and some time - to learn. A GUI 
-presents you with choices and you select one. With a **command line interface** (CLI) the choices are combinations 
-of commands and parameters, more like words in a language than buttons on a screen. They
-are not presented to you so
-you must learn a few, like learning some vocabulary in a new language. But a small 
-number of commands gets you a long way, and we'll cover those essential few today.
-
-### Flexibility and automation 
-
-The grammar of a shell allows you to combine existing tools into powerful
-pipelines and handle large volumes of data automatically. Sequences of
-commands can be written into a *script*, improving the reproducibility of 
-workflows and allowing you to repeat them easily.
-
-In addition, the command line is often the easiest way to interact with remote machines and supercomputers.
-Familiarity with the shell is near essential to run a variety of specialized tools and resources
-including high-performance computing systems.
-As clusters and cloud computing systems become more popular for scientific data crunching,
-being able to interact with the shell is becoming a necessary skill.
-We can build on the command-line skills covered here
-to tackle a wide range of scientific questions and computational challenges.
