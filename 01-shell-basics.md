@@ -52,15 +52,22 @@ it's derived from a shell written by Stephen Bourne).
 Bash is the default shell on most modern implementations of Unix
 and in most packages that provide Unix-like tools for Windows.
 
-### Is it difficult?
+## Is it difficult?
 
 It is a different model of interacting than a GUI, and that 
 will take some effort - and some time - to learn. A GUI 
 presents you with choices and you select one. With a **command line interface** (CLI) the choices are combinations 
 of commands and parameters, more like words in a language than buttons on a screen. They
-are not presented to you so
-you must learn a few, like learning some vocabulary in a new language. But a small 
+are not presented to you so you must learn a few, like learning some vocabulary in a new language. But a small 
 number of commands gets you a long way, and we'll cover those essential few today.
+
+### Activity
+Answer some questions 
+- Where are some places you'll encounter a command line interface?
+Using the etherpad, enter answers for these:
+- Advantages/disadvantages of CLI
+- Advantages/disadvantages of GUI
+
 
 ### Flexibility and automation 
 
