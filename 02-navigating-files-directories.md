@@ -25,7 +25,7 @@ keypoints:
 - "`..` means 'the directory above the current one'; `.` on its own means 'the current directory'."
 ---
 
-The part of the operating system responsible for managing files and directories 
+The part of the operating system responsible for managing files and directories
 is called the **file system**.
 It organizes our data into files,
 which hold information,
@@ -38,7 +38,7 @@ To start exploring them, we'll go to our open shell window.
 First let's find out where we are by running a command called `pwd`
 (which stands for "print working directory"). Directories are like *places* - at any time
 while we are using the shell we are in exactly one place, called
-our **current working directory**. Commands mostly read and write files in the 
+our **current working directory**. Commands mostly read and write files in the
 current working directory, i.e. "here", so knowing where you are before running
 a command is important. `pwd` shows you where you are:
 
@@ -135,12 +135,12 @@ Desktop      Downloads    Movies       Pictures
 (Again, your results may be slightly different depending on your operating
 system and how you have customized your filesystem.)
 
-`ls` prints the names of the files and directories in the current directory. 
+`ls` prints the names of the files and directories in the current directory.
 We can make its output more comprehensible by using the **flag** `-F`
 (also known as a **switch** or an **option**) ,
 which tells `ls` to add a marker to file and directory names to indicate what
 they are. A trailing `/` indicates that this is a directory. Depending on your
-settings, it might also use colors to indicate whether each entry is a file or 
+settings, it might also use colors to indicate whether each entry is a file or
 directory.
 You might recall that we used `ls -F` in an earlier example.
 
@@ -166,7 +166,7 @@ which doesn't exist.
 
 ### Getting help
 
-`ls` has lots of other **flags**. There are two common ways to find out how 
+`ls` has lots of other **flags**. There are two common ways to find out how
 to use a command and what flags it accepts:
 
 1. We can pass a `--help` flag to the command, such as:
@@ -177,7 +177,7 @@ to use a command and what flags it accepts:
 
 2. We can read its manual with `man`, such as:
     ~~~
-    $ man ls 
+    $ man ls
     ~~~
     {: .bash}
 
@@ -205,7 +205,7 @@ $ ls --help
 > $ ls -j
 > ~~~
 > {: .language-bash}
-> 
+>
 > ~~~
 > ls: invalid option -- 'j'
 > Try 'ls --help' for more information.
@@ -215,29 +215,29 @@ $ ls --help
 
 #### The `man` command
 
-The other way to learn about `ls` is to type 
+The other way to learn about `ls` is to type
 ~~~
 $ man ls
 ~~~
 {: .bash}
 
-This will turn your terminal into a page with a description 
+This will turn your terminal into a page with a description
 of the `ls` command and its options and, if you're lucky, some examples
 of how to use it.
 
 To navigate through the `man` pages,
 you may use <kbd>↑</kbd> and <kbd>↓</kbd> to move line-by-line,
 or try <kbd>B</kbd> and <kbd>Spacebar</kbd> to skip up and down by a full page.
-To search for a character or word in the `man` pages, 
-use <kbd>/</kbd> followed by the character or word you are searching for. 
+To search for a character or word in the `man` pages,
+use <kbd>/</kbd> followed by the character or word you are searching for.
 Sometimes a search will result in multiple hits.  If so, you can move between hits using <kbd>N</kbd> (for moving forward) and <kbd>Shift</kbd>+<kbd>N</kbd> (for moving backward).
 
-To **quit** the `man` pages, press <kbd>Q</kbd>. 
+To **quit** the `man` pages, press <kbd>Q</kbd>.
 
 > ## Manual pages on the web
 >
 > Of course there is a third way to access help for commands:
-> searching the internet via your web browser. 
+> searching the internet via your web browser.
 > When using internet search, including the phrase `unix man page` in your search
 > query will help to find relevant results.
 >
@@ -249,7 +249,7 @@ To **quit** the `man` pages, press <kbd>Q</kbd>.
 
 > ## Exploring More `ls` Flags
 >
-> You can also use two flags at the same time. What does the command `ls` do when used 
+> You can also use two flags at the same time. What does the command `ls` do when used
 > with the `-l` flag? What about if you use both the `-l` and the `-h` flag?
 >
 > Some of its output is about properties that we do not cover in this lesson (such
@@ -260,7 +260,7 @@ To **quit** the `man` pages, press <kbd>Q</kbd>.
 > > The `-l` flag makes `ls` use a **l**ong listing format, showing not only
 > > the file/directory names but also additional information such as the file size
 > > and the time of its last modification. If you use both the `-h` flag and the `-l` flag,
-> > this makes the file size "**h**uman readable", i.e. displaying something like `5.3K` 
+> > this makes the file size "**h**uman readable", i.e. displaying something like `5.3K`
 > > instead of `5369`.
 > {: .solution}
 {: .challenge}
@@ -443,8 +443,8 @@ which means "the current working directory".
 It may seem redundant to have a name for it,
 but we'll see some uses for it soon.
 
-Note that in most command line tools, multiple flags can be combined 
-with a single `-` and no spaces between the flags: `ls -F -a` is 
+Note that in most command line tools, multiple flags can be combined
+with a single `-` and no spaces between the flags: `ls -F -a` is
 equivalent to `ls -Fa`.
 
 > ## Other Hidden Files
