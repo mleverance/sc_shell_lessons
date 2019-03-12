@@ -16,14 +16,16 @@ Before this time, most people used *line printers.*
 These devices only allowed input and output of the letters, numbers, and punctuation found on a standard keyboard, so programming languages and software interfaces had to be designed around that constraint.
 
 **Let's introduce two terms.**
+
 Command line interface(CLI) and graphical user interface (GUI)
+
 - *command-line interface,* or CLI is an interface that developed from keyboard inputs
 >The heart of a CLI is a *read-evaluate-print loop,* or REPL: when the user types a command and then presses the Enter (or Return) key, the computer reads it, executes it, and prints its output in the shell window.
 The user then types another command, and so on until the user logs off.
 The shell is a **command-line interface** which is useful for complex, purpose-specific things.
 It uses a simple vocabulary of commands that are typed in by the user.
-- *graphical user interface,* or GUI, which has windows, icons and pointers.
-They are easy to learn and fantastic for simple tasks where "click" translates into "do the thing I want". It relies on wanting a simple set of things, and having programs that can do those things.
+
+- *graphical user interface,* or GUI, which has windows, icons and pointers. They are easy to learn and fantastic for simple tasks where "click" translates into "do the thing I want". It relies on wanting a simple set of things, and having programs that can do those things, like click farms set up to click on paid advertising links.
 
 ### The Shell
 The Shell is a program which runs other programs rather than doing calculations itself.
@@ -35,13 +37,13 @@ and in most packages that provide Unix-like tools for Windows.
 ### Is CLI difficult to use?
 
 It's a different model of interacting than a GUI, and that
-will take some effort to learn. A GUI presents you with choices and you select one. With a **command line interface** (CLI) the choices are combinations
-of commands and parameters, more like words in a language than buttons on a screen. They aren't presented to you so you must learn a few, like learning some vocabulary in a new language. But a small
+will take some effort to learn. A GUI presents you with choices and you select one. With a **command line interface** (CLI) the choices are combinations of commands and parameters, more like words in a language than buttons on a screen. They aren't presented to you so you must learn a few, like learning some vocabulary in a new language. But a small
 number of commands gets you a long way, and we'll cover those essential few today.
 
 ### Activity
-- Where are some places you'll encounter a command line interface?
-Using the etherpad, take a minute to enter answers for these:
+- Discussion
+  - Where are some places you'll encounter a command line interface?
+- Using the etherpad, take a minute to enter answers for these:
 - Advantages/disadvantages of CLI
   - advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines
   - disadvantages are its primarily textual nature and how cryptic its commands and operation can be
@@ -87,4 +89,5 @@ You need to download some files to follow this lesson:
 > git clone https://github.com/mleverance/uark-swc-files.git
 - now type 
 > cd Desktop
+
 > git clone https://github.com/mleverance/uark-swc-files.git
