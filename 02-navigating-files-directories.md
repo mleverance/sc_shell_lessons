@@ -1,23 +1,8 @@
----
-title: "Navigating Files and Directories"
-teaching: 30
-exercises: 10
-questions:
-- "How can I move around on my computer?"
-- "How can I see what files and directories I have?"
-- "How can I specify the location of a file or directory on my computer
-keypoints:
-- "The file system is responsible for managing information on the disk."
-- "Information is stored in files, which are stored in directories (folders)."
-- "Directories can also store other directories, which forms a directory tree."
-- "`cd path` changes the current working directory."
-- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
-- "`pwd` prints the user's current working directory."
-- "`/` on its own is the root directory of the whole file system."
-- "A relative path specifies a location starting from the current location."
-- "An absolute path specifies a location from the root of the file system."
-- "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
-- "`..` means 'the directory above the current one'; `.` on its own means 'the current directory'."
+# Introduction
+In this section we're going to cover:
+- How to move around on my computer
+- How to see what files and directories I have
+- How to specify the location of a file or directory on my computer
 ---
 
 ## Navigating Files and Directories
@@ -39,7 +24,7 @@ More specifically, when we type `whoami` at the shell:
 
 1. The shell finds a program called `whoami` and runs it.
 2. The shell displays the output from that program.
-3. Then, the shell displays a new prompt so that we know it is ready for more input.
+3. Then, the shell displays a new prompt so that we know it's ready for more input.
 
 **The shell is a program that runs other programs, so the commands we type must be the names of existing programs.**
 
@@ -51,8 +36,7 @@ $ something
 $ pwd
 ```
 
-The command `pwd` stands for "print working directory" and it "prints" the result of where we are on our file system.
-If we think of a file browser, the *current working directory* is whatever directory we have open, typically in the right-hand pane.
+The command `pwd` stands for "print working directory" and it "prints" to the shell window the result of where we are on our file system.
 
 **Since we just started the shell, by default, our current working directory is our home directory.**
 To understand what a "home directory" is, let’s have a look at how the file system as a whole is organized.
@@ -150,7 +134,8 @@ $ ls -F Desktop/data-shell
 **Note that we've provided the path to a directory that is contained inside another directory inside our current directory.**
 We can provide arbitrarily long file paths to arbitrarily deep files and folders on our system, as long as they are accurate.
 
-If we want to work with files and folders inside `data-shell`, however, and we don't want to type `Desktop/data-shell` every time, it would be better if **we changed our current working directory to `data-shell`, which is precisely what the `cd` command does.**
+If we want to work with files and folders inside `data-shell`, however, and we don't want to type `Desktop/data-shell` every time, it would be better if **we changed our current working directory to `data-shell`. The command to change locations is `cd` followed by a directory name to change our working directory. `cd` stands for "change directory", which is a bit misleading:
+the command doesn't change the directory, it changes the shell's idea of what directory we are in.**
 
 ```sh
 cd Desktop
@@ -158,12 +143,6 @@ cd data-shell
 cd data
 ```
 
-The command to change locations is `cd` followed by a
-directory name to change our working directory.
-`cd` stands for "change directory",
-which is a bit misleading:
-the command doesn't change the directory,
-it changes the shell's idea of what directory we are in.
 Now where are we?
 How can we find out?
 
@@ -177,18 +156,24 @@ We now know how to go down the directory tree, but how do we go up?
 ```sh
 cd data-shell
 ```
+But we get an error!  Why is this?  
 
-**With what we've seen so far, we can only use `cd` to see directories below our current working directory.**
-We'll introduce a special symbol that indicates the directory above our current working directory.
+With our methods so far, `cd` can only see sub-directories inside your current directory.  There are
+different ways to see directories above your current location; we'll start with the simplest.  
 
-```sh
-cd ..
-pwd
-```
+There is a shortcut in the shell to move up one directory level that looks like this:
+
+~~~
+$ cd ..
+~~~
 
 The `..` symbol is a special directory name meaning "the directory containing the current working directory."
 We also call this the *parent* of the current working directory.
-This special always-parent directory doesn't show up in `ls` by default, but...
+
+If we run `pwd` after running `cd ..`, we're back in `/Users/*yourname*/Desktop/data-shell`:
+
+The special directory `..` doesn't usually show up when we run `ls`.  If we want
+to display it, we can give `ls` the `-a` flag:
 
 ```sh
 ls -F -a
@@ -196,12 +181,8 @@ ls -F -a
 
 The `-a` option stands for "show all" and it can be used to see hidden files and folders.
 
-### Challenge: Hidden Files and Directories
+It also displays another special directory that's just called `.`, which means "the current working directory". 
 
-We've seen that the `..` symbol means the "parent of the current working directory," or, "the directory above this one."
-Notice that in the listing from the last command there is also a `.` symbol in the list.
-What does the `.` symbol stand for?
-**Hint:** Think of a command you've seen that this symbol could be an argument for.
 
 ### Relative versus Absolute File Paths
 
@@ -220,6 +201,11 @@ $ cd
 
 How can you check what happened?
 
+```sh
+$ pwd
+```
+cd without an argument returns you to the home directory, which helps if you're lost in your filesystem
+
 Let's go back to the `data` directory we were in before.
 Last time, we used three commands to ge there.
 Let's string those three file paths together so that we only have to type `cd` once.
@@ -227,6 +213,7 @@ Let's string those three file paths together so that we only have to type `cd` o
 ```sh
 $ cd Desktop/data-shell/data
 ```
+Check that we’ve moved to the right place by running pwd 
 
 **So far, when specifying directory names, we've been using relative paths.**
 A relative path is a file path that is relative to the current working directory.
@@ -241,240 +228,7 @@ $ cd /home/arthur/Desktop/data-shell
 $ cd ~/Desktop/data-shell
 ```
 
-# key points:
-- "The file system is responsible for managing information on the disk."
-- "Information is stored in files, which are stored in directories (folders)."
-- "Directories can also store other directories, which forms a directory tree."
-- "`cd path` changes the current working directory."
-- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
-- "`pwd` prints the user's current working directory."
-- "`/` on its own is the root directory of the whole file system."
-- "A relative path specifies a location starting from the current location."
-- "An absolute path specifies a location from the root of the file system."
-- "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
-- "`..` means 'the directory above the current one'; `.` on its own means 'the current directory'."
-
-
-
-
-
-# regular lesson begins
-
-
-
-These commands will move us from our home directory onto our Desktop, then into
-the `data-shell` directory, then into the `data` directory.  You will notice that `cd` doesn't print anything.  This is normal.  Many shell commands will not output anything to the screen when successfully executed.  But if we run `pwd` after it, we can see that we are now
-in `/Users/nelle/Desktop/data-shell/data`.
-If we run `ls` without arguments now,
-it lists the contents of `/Users/nelle/Desktop/data-shell/data`,
-because that's where we now are:
-
-~~~
-$ pwd
-~~~
-{: .language-bash}
-
-~~~
-/Users/nelle/Desktop/data-shell/data
-~~~
-{: .output}
-
-~~~
-$ ls -F
-~~~
-{: .language-bash}
-
-~~~
-amino-acids.txt   elements/     pdb/	        salmon.txt
-animals.txt       morse.txt     planets.txt     sunspot.txt
-~~~
-{: .output}
-
-We now know how to go down the directory tree, but
-how do we go up?  We might try the following:
-
-~~~
-$ cd data-shell
-~~~
-{: .language-bash}
-
-~~~
--bash: cd: data-shell: No such file or directory
-~~~
-{: .error}
-
-But we get an error!  Why is this?  
-
-With our methods so far,
-`cd` can only see sub-directories inside your current directory.  There are
-different ways to see directories above your current location; we'll start
-with the simplest.  
-
-There is a shortcut in the shell to move up one directory level
-that looks like this:
-
-~~~
-$ cd ..
-~~~
-{: .language-bash}
-
-`..` is a special directory name meaning
-"the directory containing this one",
-or more succinctly,
-the **parent** of the current directory.
-Sure enough,
-if we run `pwd` after running `cd ..`, we're back in `/Users/nelle/Desktop/data-shell`:
-
-~~~
-$ pwd
-~~~
-{: .language-bash}
-
-~~~
-/Users/nelle/Desktop/data-shell
-~~~
-{: .output}
-
-The special directory `..` doesn't usually show up when we run `ls`.  If we want
-to display it, we can give `ls` the `-a` flag:
-
-~~~
-$ ls -F -a
-~~~
-{: .language-bash}
-
-~~~
-./   .bash_profile  data/       north-pacific-gyre/  pizza.cfg  thesis/
-../  creatures/     molecules/  notes.txt            solar.pdf  writing/
-~~~
-{: .output}
-
-`-a` stands for "show all";
-it forces `ls` to show us file and directory names that begin with `.`,
-such as `..` (which, if we're in `/Users/nelle`, refers to the `/Users` directory)
-As you can see,
-it also displays another special directory that's just called `.`,
-which means "the current working directory".
-It may seem redundant to have a name for it,
-but we'll see some uses for it soon.
-
-Note that in most command line tools, multiple flags can be combined
-with a single `-` and no spaces between the flags: `ls -F -a` is
-equivalent to `ls -Fa`.
-
-> ## Other Hidden Files
->
-> In addition to the hidden directories `..` and `.`, you may also see a file
-> called `.bash_profile`. This file usually contains shell configuration
-> settings. You may also see other files and directories beginning
-> with `.`. These are usually files and directories that are used to configure
-> different programs on your computer. The prefix `.` is used to prevent these
-> configuration files from cluttering the terminal when a standard `ls` command
-> is used.
-{: .callout}
-
-> ## Orthogonality
->
-> The special names `.` and `..` don't belong to `cd`;
-> they are interpreted the same way by every program.
-> For example,
-> if we are in `/Users/nelle/data`,
-> the command `ls ..` will give us a listing of `/Users/nelle`.
-> When the meanings of the parts are the same no matter how they're combined,
-> programmers say they are **orthogonal**:
-> Orthogonal systems tend to be easier for people to learn
-> because there are fewer special cases and exceptions to keep track of.
-{: .callout}
-
-These then, are the basic commands for navigating the filesystem on your computer:
-`pwd`, `ls` and `cd`.  Let's explore some variations on those commands.  What happens
-if you type `cd` on its own, without giving
-a directory?  
-
-~~~
-$ cd
-~~~
-{: .language-bash}
-
-How can you check what happened?  `pwd` gives us the answer!  
-
-~~~
-$ pwd
-~~~
-{: .language-bash}
-
-~~~
-/Users/nelle
-~~~
-{: .output}
-
-It turns out that `cd` without an argument will return you to your home directory,
-which is great if you've gotten lost in your own filesystem.  
-
-Let's try returning to the `data` directory from before.  Last time, we used
-three commands, but we can actually string together the list of directories
-to move to `data` in one step:
-
-~~~
-$ cd Desktop/data-shell/data
-~~~
-{: .language-bash}
-
-Check that we've moved to the right place by running `pwd` and `ls -F`  
-
-If we want to move up one level from the data directory, we could use `cd ..`.  But
-there is another way to move to any directory, regardless of your
-current location.  
-
-So far, when specifying directory names, or even a directory path (as above),
-we have been using **relative paths**.  When you use a relative path with a command
-like `ls` or `cd`, it tries to find that location  from where we are,
-rather than from the root of the file system.  
-
-However, it is possible to specify the **absolute path** to a directory by
-including its entire path from the root directory, which is indicated by a
-leading slash.  The leading `/` tells the computer to follow the path from
-the root of the file system, so it always refers to exactly one directory,
-no matter where we are when we run the command.
-
-This allows us to move to our `data-shell` directory from anywhere on
-the filesystem (including from inside `data`).  To find the absolute path
-we're looking for, we can use `pwd` and then extract the piece we need
-to move to `data-shell`.  
-
-~~~
-$ pwd
-~~~
-{: .language-bash}
-
-~~~
-/Users/nelle/Desktop/data-shell/data
-~~~
-{: .output}
-
-~~~
-$ cd /Users/nelle/Desktop/data-shell
-~~~
-{: .language-bash}
-
-Run `pwd` and `ls -F` to ensure that we're in the directory we expect.  
-
-> ## Two More Shortcuts
->
-> The shell interprets the character `~` (tilde) at the start of a path to
-> mean "the current user's home directory". For example, if Nelle's home
-> directory is `/Users/nelle`, then `~/data` is equivalent to
-> `/Users/nelle/data`. This only works if it is the first character in the
-> path: `here/there/~/elsewhere` is *not* `here/there/Users/nelle/elsewhere`.
->
-> Another shortcut is the `-` (dash) character.  `cd` will translate `-` into
-> *the previous directory I was in*, which is faster than having to remember,
-> then type, the full path.  This is a *very* efficient way of moving back
-> and forth between directories. The difference between `cd ..` and `cd -` is
-> that the former brings you *up*, while the latter brings you *back*. You can
-> think of it as the *Last Channel* button on a TV remote.
-{: .callout}
-
+## Activity
 > ## Absolute vs Relative Paths
 >
 > Starting from `/Users/amanda/data/`,
@@ -503,6 +257,28 @@ Run `pwd` and `ls -F` to ensure that we're in the directory we expect.
 > > 9. Yes: goes up one level.
 > {: .solution}
 {: .challenge}
+
+# key points:
+- "The file system is responsible for managing information on the disk."
+- "Information is stored in files, which are stored in directories (folders)."
+- "Directories can also store other directories, which forms a directory tree."
+- "`cd path` changes the current working directory."
+- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
+- "`pwd` prints the user's current working directory."
+- "`/` on its own is the root directory of the whole file system."
+- "A relative path specifies a location starting from the current location."
+- "An absolute path specifies a location from the root of the file system."
+- "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
+- "`..` means 'the directory above the current one'; `.` on its own means 'the current directory'."
+
+
+
+
+
+# regular lesson begins
+
+
+
 
 > ## Relative Path Resolution
 >
