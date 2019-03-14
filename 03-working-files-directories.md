@@ -170,20 +170,14 @@ draft.txt
 > >     efficiently generate a blank text file to be used by such
 > >     programs.
 > {: .solution}
-{: .challenge}
 
 > ## What's In A Name?
 >
-> You may have noticed that all of Nelle's files are named "something dot
-> something", and in this part of the lesson, we always used the extension
-> `.txt`.  This is just a convention: we can call a file `mythesis` or
-> almost anything else we want. However, most people use two-part names
-> most of the time to help them (and their programs) tell different kinds
+> Two-part filenames are used most of the time to tell different kinds
 > of files apart. The second part of such a name is called the
 > **filename extension**, and indicates
 > what type of data the file holds: `.txt` signals a plain text file, `.pdf`
-> indicates a PDF document, `.cfg` is a configuration file full of parameters
-> for some program or other, `.png` is a PNG image, and so on.
+> indicates a PDF document, `.png` is a PNG image, and so on.
 >
 > This is just a convention, albeit an important one. Files contain
 > bytes: it's up to us and our programs to interpret those bytes
@@ -194,7 +188,6 @@ draft.txt
 > magically turn it into a recording of whalesong, though it *might*
 > cause the operating system to try to open it with a music player
 > when someone double-clicks it.
-{: .callout}
 
 ## Moving files and directories
 Returning to the `data-shell` directory,
@@ -202,7 +195,6 @@ Returning to the `data-shell` directory,
 ```
 cd ~/Desktop/data-shell/
 ```
-{: .language-bash}
 
 In our `thesis` directory we have a file `draft.txt`
 which isn't a particularly informative name,
@@ -212,7 +204,6 @@ which is short for "move":
 ~~~
 $ mv thesis/draft.txt thesis/quotes.txt
 ~~~
-{: .language-bash}
 
 The first argument tells `mv` what we're "moving",
 while the second is where it's to go.
@@ -225,21 +216,19 @@ Sure enough,
 ~~~
 $ ls thesis
 ~~~
-{: .language-bash}
 
 ~~~
 quotes.txt
 ~~~
-{: .output}
 
-One has to be careful when specifying the target file name, since `mv` will
+Be careful when specifying the target file name, since `mv` will
 silently overwrite any existing file with the same name, which could
 lead to data loss. An additional flag, `mv -i` (or `mv --interactive`),
 can be used to make `mv` ask you for confirmation before overwriting.
 
 Note that `mv` also works on directories.
 
-Let's move `quotes.txt` into the current working directory.
+Let's move `quotes.txt` into the current working directory which is data-shell.
 We use `mv` once again,
 but this time we'll just use the name of a directory as the second argument
 to tell `mv` that we want to keep the filename,
@@ -251,7 +240,6 @@ the directory name we use is the special directory name `.` that we mentioned ea
 ~~~
 $ mv thesis/quotes.txt .
 ~~~
-{: .language-bash}
 
 The effect is to move the file from the directory it was in to the current working directory.
 `ls` now shows us that `thesis` is empty:
@@ -259,7 +247,6 @@ The effect is to move the file from the directory it was in to the current worki
 ~~~
 $ ls thesis
 ~~~
-{: .language-bash}
 
 Further,
 `ls` with a filename or directory name as an argument only lists that file or directory.
@@ -268,43 +255,10 @@ We can use this to see that `quotes.txt` is still in our current directory:
 ~~~
 $ ls quotes.txt
 ~~~
-{: .language-bash}
 
 ~~~
 quotes.txt
 ~~~
-{: .output}
-
-> ## Moving to the Current Folder
->
-> After running the following commands,
-> Jamie realizes that she put the files `sucrose.dat` and `maltose.dat` into the wrong folder:
->
-> ~~~
-> $ ls -F
->  analyzed/ raw/
-> $ ls -F analyzed
-> fructose.dat glucose.dat maltose.dat sucrose.dat
-> $ cd raw/
-> ~~~
-> {: .language-bash}
->
-> Fill in the blanks to move these files to the current folder
-> (i.e., the one she is currently in):
->
-> ~~~
-> $ mv ___/sucrose.dat  ___/maltose.dat ___
-> ~~~
-> {: .language-bash}
-> > ## Solution
-> > ```
-> > $ mv ../analyzed/sucrose.dat ../analyzed/maltose.dat .
-> > ```
-> > {: .language-bash}
-> > Recall that `..` refers to the parent directory (i.e. one above the current directory)
-> > and that `.` refers to the current directory.
-> {: .solution}
-{: .challenge}
 
 ## Copying files and directories
 
@@ -318,12 +272,12 @@ with two paths as arguments --- like most Unix commands,
 $ cp quotes.txt thesis/quotations.txt
 $ ls quotes.txt thesis/quotations.txt
 ~~~
-{: .language-bash}
+
 
 ~~~
 quotes.txt   thesis/quotations.txt
 ~~~
-{: .output}
+
 
 We can also copy a directory and all its contents by using the
 [recursive](https://en.wikipedia.org/wiki/Recursion) flag `-r`,
@@ -332,14 +286,12 @@ e.g. to back up a directory:
 ```
 $ cp -r thesis thesis_backup
 ```
-{: .language-bash}
 
 We can check the result by listing the contents of both the `thesis` and `thesis_backup` directory:
 
 ```
 $ ls thesis thesis_backup
 ```
-{: .language-bash}
 
 ```
 thesis:
@@ -348,8 +300,6 @@ quotations.txt
 thesis_backup:
 quotations.txt
 ```
-{: .output}
-
 
 > ## Renaming Files
 >
@@ -373,7 +323,7 @@ quotations.txt
 > > 4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names
 > > cannot be created.
 > {: .solution}
-{: .challenge}
+
 
 > ## Moving and Copying
 >
@@ -422,31 +372,27 @@ quotations.txt
 > > 3. No, see explanation above.  `proteins.dat` is located at `/Users/jamie/data/recombine`
 > > 4. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
 > {: .solution}
-{: .challenge}
+
 
 ## Removing files and directories
 
 Returning to the `data-shell` directory,
 let's tidy up this directory by removing the `quotes.txt` file we created.
-The Unix command we'll use for this is `rm` (short for 'remove'):
+The command we'll use for this is `rm` (short for 'remove'):
 
 ~~~
 $ rm quotes.txt
 ~~~
-{: .language-bash}
 
 We can confirm the file has gone using `ls`:
 
 ~~~
 $ ls quotes.txt
 ~~~
-{: .language-bash}
-
 
 ```
 ls: cannot access 'quotes.txt': No such file or directory
 ```
-{: .output}
 
 > ## Deleting Is Forever
 >
@@ -457,7 +403,6 @@ ls: cannot access 'quotes.txt': No such file or directory
 > recovering deleted files do exist, but there's no guarantee they'll
 > work in any particular situation, since the computer may recycle the
 > file's disk space right away.
-{: .callout}
 
 
 > ## Using `rm` Safely
@@ -474,7 +419,6 @@ ls: cannot access 'quotes.txt': No such file or directory
 > > The Unix shell doesn't have a trash bin, so all the files removed will disappear forever.
 > > By using the `-i` flag, we have the chance to check that we are deleting only the files that we want to remove.
 > {: .solution}
-{: .challenge}
 
 
 If we try to remove the `thesis` directory using `rm thesis`,
@@ -483,12 +427,10 @@ we get an error message:
 ~~~
 $ rm thesis
 ~~~
-{: .language-bash}
 
 ~~~
 rm: cannot remove `thesis': Is a directory
 ~~~
-{: .error}
 
 This happens because `rm` by default only works on files, not directories.
 
@@ -498,55 +440,14 @@ recursive flag `-r`, and it will do so *without any confirmation prompts*:
 ~~~
 $ rm -r thesis
 ~~~
-{: .language-bash}
+
 
 Given that there is no way to retrieve files deleted using the shell,
 `rm -r` *should be used with great caution* (you might consider adding the interactive flag `rm -r -i`).
 
 ## Operations with multiple files and directories
 
-Oftentimes one needs to copy or move several files at once. This can be done by providing a list of individual filenames, or specifying a naming pattern using wildcards.  
-
-> ## Copy with Multiple Filenames
->
-> For this exercise, you can test the commands in the `data-shell/data` directory.
->
-> In the example below, what does `cp` do when given several filenames and a directory name?
->
-> ~~~
-> $ mkdir backup
-> $ cp amino-acids.txt animals.txt backup/
-> ~~~
-> {: .language-bash}
->
-> In the example below, what does `cp` do when given three or more file names?
->
-> ~~~
-> $ ls -F
-> ~~~
-> {: .language-bash}
-> ~~~
-> amino-acids.txt  animals.txt  backup/  elements/  morse.txt  pdb/  planets.txt  salmon.txt  sunspot.txt
-> ~~~
-> {: .output}
-> ~~~
-> $ cp amino-acids.txt animals.txt morse.txt 
-> ~~~
-> {: .language-bash}
->
-> > ## Solution
-> > If given more than one file name followed by a directory name (i.e. the destination directory must 
-> > be the last argument), `cp` copies the files to the named directory.
-> >
-> > If given three file names, `cp` throws an error because it is expecting a directory
-> > name as the last argument.
-> >
-> > ```
-> > cp: target ‘morse.txt’ is not a directory
-> > ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
+What if you need to copy or move several files at once? This can be done by providing a list of individual filenames, or specifying a naming pattern using wildcards.  
 
 ### Using wildcards for accessing multiple files at once
 
@@ -578,7 +479,7 @@ Oftentimes one needs to copy or move several files at once. This can be done by 
 > file names matching these expressions, but not the wildcards
 > themselves. It is the shell, not the other programs, that deals with
 > expanding wildcards, and this is another example of orthogonal design.
-{: .callout}
+
 
 > ## List filenames matching a pattern
 >
@@ -603,155 +504,4 @@ Oftentimes one needs to copy or move several files at once. This can be done by 
 >>
 >> `4.` only shows files starting with `ethane.`.
 > {: .solution}
-{: .challenge}
 
-> ## More on Wildcards
->
-> Sam has a directory containing calibration data, datasets, and descriptions of
-> the datasets:
->
-> ~~~
-> 2015-10-23-calibration.txt
-> 2015-10-23-dataset1.txt
-> 2015-10-23-dataset2.txt
-> 2015-10-23-dataset_overview.txt
-> 2015-10-26-calibration.txt
-> 2015-10-26-dataset1.txt
-> 2015-10-26-dataset2.txt
-> 2015-10-26-dataset_overview.txt
-> 2015-11-23-calibration.txt
-> 2015-11-23-dataset1.txt
-> 2015-11-23-dataset2.txt
-> 2015-11-23-dataset_overview.txt
-> ~~~
-> {: .language-bash}
->
-> Before heading off to another field trip, she wants to back up her data and
-> send some datasets to her colleague Bob. Sam uses the following commands
-> to get the job done:
->
-> ~~~
-> $ cp *dataset* /backup/datasets
-> $ cp ____calibration____ /backup/calibration
-> $ cp 2015-____-____ ~/send_to_bob/all_november_files/
-> $ cp ____ ~/send_to_bob/all_datasets_created_on_a_23rd/
-> ~~~
-> {: .language-bash}
->
-> Help Sam by filling in the blanks.
->
-> > ## Solution
-> > ```
-> > $ cp *calibration.txt /backup/calibration
-> > $ cp 2015-11-* ~/send_to_bob/all_november_files/
-> > $ cp *-23-dataset* ~send_to_bob/all_datasets_created_on_a_23rd/
-> > ```
-> > {: .language-bash}
-> {: .solution}
-{: .challenge}
-
-> ## Organizing Directories and Files
->
-> Jamie is working on a project and she sees that her files aren't very well
-> organized:
->
-> ~~~
-> $ ls -F
-> ~~~
-> {: .language-bash}
-> ~~~
-> analyzed/  fructose.dat    raw/   sucrose.dat
-> ~~~
-> {: .output}
->
-> The `fructose.dat` and `sucrose.dat` files contain output from her data
-> analysis. What command(s) covered in this lesson does she need to run so that the commands below will
-> produce the output shown?
->
-> ~~~
-> $ ls -F
-> ~~~
-> {: .language-bash}
-> ~~~
-> analyzed/   raw/
-> ~~~
-> {: .output}
-> ~~~
-> $ ls analyzed
-> ~~~
-> {: .language-bash}
-> ~~~
-> fructose.dat    sucrose.dat
-> ~~~
-> {: .output}
->
-> > ## Solution
-> > ```
-> > mv *.dat analyzed
-> > ```
-> > {: .language-bash}
-> > Jamie needs to move her files `fructose.dat` and `sucrose.dat` to the `analyzed` directory.
-> > The shell will expand *.dat to match all .dat files in the current directory.
-> > The `mv` command then moves the list of .dat files to the "analyzed" directory.
-> {: .solution}
-{: .challenge}
-
-> ## Reproduce a folder structure
->
-> You're starting a new experiment, and would like to duplicate the directory
-> structure from your previous experiment so you can add new data.
->
-> Assume that the previous experiment is in a folder called '2016-05-18',
-> which contains a `data` folder that in turn contains folders named `raw` and
-> `processed` that contain data files.  The goal is to copy the folder structure
-> of the `2016-05-18-data` folder into a folder called `2016-05-20`
-> so that your final directory structure looks like this:
->
->	2016-05-20/
->	└── data
->	    ├── processed
->	    └── raw
-> 
-> Which of the following set of commands would achieve this objective?
-> What would the other commands do?
->
-> ~~~
-> $ mkdir 2016-05-20
-> $ mkdir 2016-05-20/data
-> $ mkdir 2016-05-20/data/processed
-> $ mkdir 2016-05-20/data/raw
-> ~~~
-> {: .language-bash}
-> ~~~
-> $ mkdir 2016-05-20
-> $ cd 2016-05-20
-> $ mkdir data
-> $ cd data
-> $ mkdir raw processed
-> ~~~
-> {: .language-bash}
-> ~~~
-> $ mkdir 2016-05-20/data/raw
-> $ mkdir 2016-05-20/data/processed
-> ~~~
-> {: .language-bash}
-> ~~~
-> $ mkdir 2016-05-20
-> $ cd 2016-05-20
-> $ mkdir data
-> $ mkdir raw processed
-> ~~~
-> {: .language-bash}
-> >
-> > ## Solution
-> > The first two sets of commands achieve this objective.
-> > The first set uses relative paths to create the top level directory before
-> > the subdirectories.
-> >
-> > The third set of commands will give an error because `mkdir` won't create a subdirectory
-> > of a non-existant directory: the intermediate level folders must be created first.
-> > 
-> > The final set of commands generates the 'raw' and 'processed' directories at the same level
-> > as the 'data' directory.
-> {: .solution}
-{: .challenge}
