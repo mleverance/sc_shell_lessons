@@ -37,7 +37,6 @@ Let's create a new directory called `thesis` using the command `mkdir thesis`
 ~~~
 $ mkdir thesis
 ~~~
-{: .language-bash}
 
 As you might guess from its name,
 `mkdir` means "make directory".
@@ -48,12 +47,10 @@ the new directory is created in the current working directory:
 ~~~
 $ ls -F
 ~~~
-{: .language-bash}
 
 ~~~
 creatures/  data/  molecules/  north-pacific-gyre/  notes.txt  pizza.cfg  solar.pdf  thesis/  writing/
 ~~~
-{: .output}
 
 > ## Two ways of doing the same thing
 > Using the shell to create a directory is no different than using a file explorer.
@@ -61,7 +58,7 @@ creatures/  data/  molecules/  north-pacific-gyre/  notes.txt  pizza.cfg  solar.
 > the `thesis` directory will appear there too.
 > While the shell and the file explorer are two different ways of interacting with the files,
 > the files and directories themselves are the same.
-{: .callout}
+
 
 > ## Good names for files and directories
 >
@@ -89,16 +86,24 @@ creatures/  data/  molecules/  north-pacific-gyre/  notes.txt  pizza.cfg  solar.
 >
 > If you need to refer to names of files or directories that have spaces
 > or other special characters, you should surround the name in quotes (`""`).
-{: .callout}
+
 
 Since we've just created the `thesis` directory, there's nothing in it yet:
 
 ~~~
 $ ls -F thesis
 ~~~
-{: .language-bash}
+
 
 ### Create a text file
+A note on text editors... for this workshop we'll use the text editor called nano which functions inside the shell. When you're working on your own you might want to use a different one, like emacs or vim on Unix systems or Notepad++ on Windows or Atom on Windows/Mac.
+
+> #### Which Editor?
+> If you use an editor outside of the shell (meaning other than nano,
+> you'll need to know where it searches
+> for and saves files. If you start it from the shell, it will (probably)
+> use your current working directory as its default location, but be aware of where it's saving files. 
+
 Let's change our working directory to `thesis` using `cd`,
 then run a text editor called Nano to create a file called `draft.txt`:
 
@@ -106,61 +111,17 @@ then run a text editor called Nano to create a file called `draft.txt`:
 $ cd thesis
 $ nano draft.txt
 ~~~
-{: .language-bash}
-
-> ## Which Editor?
->
-> When we say, "`nano` is a text editor," we really do mean "text": it can
-> only work with plain character data, not tables, images, or any other
-> human-friendly media. We use it in examples because it is one of the 
-> least complex text editors. However, because of this trait, it may 
-> not be powerful enough or flexible enough for the work you need to do
-> after this workshop. On Unix systems (such as Linux and Mac OS X),
-> many programmers use [Emacs](http://www.gnu.org/software/emacs/) or
-> [Vim](http://www.vim.org/) (both of which require more time to learn), 
-> or a graphical editor such as
-> [Gedit](http://projects.gnome.org/gedit/). On Windows, you may wish to
-> use [Notepad++](http://notepad-plus-plus.org/).  Windows also has a built-in
-> editor called `notepad` that can be run from the command line in the same
-> way as `nano` for the purposes of this lesson.  
->
-> No matter what editor you use, you will need to know where it searches
-> for and saves files. If you start it from the shell, it will (probably)
-> use your current working directory as its default location. If you use
-> your computer's start menu, it may want to save files in your desktop or
-> documents directory instead. You can change this by navigating to
-> another directory the first time you "Save As..."
-{: .callout}
-
-Let's type in a few lines of text.
-Once we're happy with our text, we can press <kbd>Ctrl</kbd>+<kbd>O</kbd> (press the Ctrl or Control key and, while
-holding it down, press the O key) to write our data to disk
-(we'll be asked what file we want to save this to:
-press <kbd>Return</kbd> to accept the suggested default of `draft.txt`).
-
-<div style="width:80%; margin: auto;"><img alt="Nano in Action" src="../fig/nano-screenshot.png"></div>
-
-Once our file is saved, we can use `Ctrl-X` to quit the editor and
-return to the shell.
-
-> ## Control, Ctrl, or ^ Key
->
-> The Control key is also called the "Ctrl" key. There are various ways
-> in which using the Control key may be described. For example, you may
-> see an instruction to press the Control key and, while holding it down,
-> press the X key, described as any of:
->
-> * `Control-X`
-> * `Control+X`
-> * `Ctrl-X`
-> * `Ctrl+X`
-> * `^X`
-> * `C-x`
->
+Let's type in a few lines of text, whatever you want.
 > In nano, along the bottom of the screen you'll see `^G Get Help ^O WriteOut`.
 > This means that you can use `Control-G` to get help and `Control-O` to save your
 > file.
-{: .callout}
+Once we're happy with our text, we can press <kbd>Ctrl</kbd>+<kbd>O</kbd> (press the Ctrl or Control key and, while
+holding it down, press the O key) to 'write out' the file to disk which is basically saving it
+(we'll be asked what file we want to save this to:
+press <kbd>Return</kbd> to accept the suggested default of `draft.txt`).
+
+Once our file is saved, we can use `Ctrl-X` to quit the editor and
+return to the shell.
 
 `nano` doesn't leave any output on the screen after it exits,
 but `ls` now shows that we have created a file called `draft.txt`:
@@ -168,12 +129,10 @@ but `ls` now shows that we have created a file called `draft.txt`:
 ~~~
 $ ls
 ~~~
-{: .language-bash}
 
 ~~~
 draft.txt
 ~~~
-{: .output}
 
 > ## Creating Files a Different Way
 >
@@ -183,7 +142,7 @@ draft.txt
 > ~~~
 > $ touch my_file.txt
 > ~~~
-> {: .language-bash}
+>
 >
 > 1.  What did the `touch` command do?
 >     When you look at your current directory using the GUI file explorer,
