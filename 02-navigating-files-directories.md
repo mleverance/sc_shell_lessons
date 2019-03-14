@@ -40,17 +40,15 @@ The command `pwd` stands for "print working directory" and it "prints" to the sh
 
 **Since we just started the shell, by default, our current working directory is our home directory.**
 To understand what a "home directory" is, let’s have a look at how the file system as a whole is organized.
-Here is an example file system similar to the file system on Mac OSX; it may look pretty different from yours.
 
-![](./filesystem.svg)
+> open shell-slides-for-workshop
+> - show slide 1
 
 - At the top is the *root directory;* the directory that holds everything else. We refer to it using a forward-slash character on its own; this is the leading slash we see when we type `pwd`.
 - Inside that directory are several others. The `Users` directory is where user's personal files are stored.
 - **Notice that there are two meanings of the forward slash:** When it appears at the front of a file or directory name, it refers to the root directory. When it appears *inside* a file path, it's just a separator between directory names.
 
 Underneath `/Users`, we find one directory for each user with an account on this hypothetical machine.
-
-![](./home-directories.svg)
 
 Next, we'll see how to list the contents of our file system.
 
@@ -105,17 +103,16 @@ $ ls -F Desktop
 
 **Your output from this command should be a list of the files on your desktop and should include the folder data-shell. Take a moment to confirm that is the case.**
 
-> ## Listing Recursively and By Time
+> ## Exploring more ls flags
 >
-> The command `ls -R` lists the contents of directories recursively, i.e., lists
-> their sub-directories, sub-sub-directories, and so on at each level. The command
-> `ls -t` lists things by time of last change, with most recently changed files or
-> directories first.
-> In what order does `ls -R -t` display things? Hint: `ls -l` uses a long listing
-> format to view timestamps.
+> You can also use two flags at the same time. What does the command ls do when used with the -l flag? 
+> What about if you use both the -l and the -h flag?
+> Hint: man ls or ls --help for a list of all options
 >
 > > ## Solution
-> > The files/directories in each directory are sorted by time of last change.
+> > The -l flag makes ls use a long listing format, showing not only the file/directory names but also additional 
+> > information such as the file size and the time of its last modification. If you use both the -h flag and the -l flag, 
+> > this makes the file size “human readable”, i.e. displaying something like 5.3K instead of 5369.
 > {: .solution}
 {: .challenge}
 
@@ -227,6 +224,19 @@ $ pwd
 $ cd /home/arthur/Desktop/data-shell
 $ cd ~/Desktop/data-shell
 ```
+### A note on tab completion
+You can save time by typing the first letter or letters of a directory (or file, if you want a file from a directory) and then press tab to autocomplete the directory or file name
+
+from the data-shell folder
+```sh
+$ cd no (press tab)
+> displays the two names that begin with 'no'
+> we want the north-pacific-gyre directory
+> how do we know it's a directory? (ends in slash) 
+> retype with more letters this time
+$ cd nor (press tab)
+> now it autocompletes to north-pacific-gyre directory
+```
 
 ## Activity
 > ## Absolute vs Relative Paths
@@ -259,142 +269,5 @@ $ cd ~/Desktop/data-shell
 {: .challenge}
 
 # key points:
-- "The file system is responsible for managing information on the disk."
-- "Information is stored in files, which are stored in directories (folders)."
-- "Directories can also store other directories, which forms a directory tree."
-- "`cd path` changes the current working directory."
-- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
-- "`pwd` prints the user's current working directory."
-- "`/` on its own is the root directory of the whole file system."
-- "A relative path specifies a location starting from the current location."
-- "An absolute path specifies a location from the root of the file system."
-- "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
-- "`..` means 'the directory above the current one'; `.` on its own means 'the current directory'."
+- show slide 2
 
-
-
-
-
-# regular lesson begins
-
-
-
-
-> ## Relative Path Resolution
->
-> Using the filesystem diagram below, if `pwd` displays `/Users/thing`,
-> what will `ls -F ../backup` display?
->
-> 1.  `../backup: No such file or directory`
-> 2.  `2012-12-01 2013-01-08 2013-01-27`
-> 3.  `2012-12-01/ 2013-01-08/ 2013-01-27/`
-> 4.  `original/ pnas_final/ pnas_sub/`
->
-> ![File System for Challenge Questions](../fig/filesystem-challenge.svg)
->
-> > ## Solution
-> > 1. No: there *is* a directory `backup` in `/Users`.
-> > 2. No: this is the content of `Users/thing/backup`,
-> >    but with `..` we asked for one level further up.
-> > 3. No: see previous explanation.
-> > 4. Yes: `../backup/` refers to `/Users/backup/`.
-> {: .solution}
-{: .challenge}
-
-> ## `ls` Reading Comprehension
->
-> Assuming a directory structure as in the above Figure
-> (File System for Challenge Questions), if `pwd` displays `/Users/backup`,
-> and `-r` tells `ls` to display things in reverse order,
-> what command will result in the following output:
->
-> ~~~
-> pnas_sub/ pnas_final/ original/
-> ~~~
-> {: .output}
->
-> 1.  `ls pwd`
-> 2.  `ls -r -F`
-> 3.  `ls -r -F /Users/backup`
-> 4.  Either #2 or #3 above, but not #1.
->
-> > ## Solution
-> >  1. No: `pwd` is not the name of a directory.
-> >  2. Yes: `ls` without directory argument lists files and directories
-> >     in the current directory.
-> >  3. Yes: uses the absolute path explicitly.
-> >  4. Correct: see explanations above.
-> {: .solution}
-{: .challenge}
-
-### Nelle's Pipeline: Organizing Files
-
-Knowing just this much about files and directories,
-Nelle is ready to organize the files that the protein assay machine will create.
-First,
-she creates a directory called `north-pacific-gyre`
-(to remind herself where the data came from).
-Inside that,
-she creates a directory called `2012-07-03`,
-which is the date she started processing the samples.
-She used to use names like `conference-paper` and `revised-results`,
-but she found them hard to understand after a couple of years.
-(The final straw was when she found herself creating
-a directory called `revised-revised-results-3`.)
-
-> ## Sorting Output
->
-> Nelle names her directories "year-month-day",
-> with leading zeroes for months and days,
-> because the shell displays file and directory names in alphabetical order.
-> If she used month names,
-> December would come before July;
-> if she didn't use leading zeroes,
-> November ('11') would come before July ('7'). Similarly, putting the year first
-> means that June 2012 will come before June 2013.
-{: .callout}
-
-Each of her physical samples is labelled according to her lab's convention
-with a unique ten-character ID,
-such as "NENE01729A".
-This is what she used in her collection log
-to record the location, time, depth, and other characteristics of the sample,
-so she decides to use it as part of each data file's name.
-Since the assay machine's output is plain text,
-she will call her files `NENE01729A.txt`, `NENE01812A.txt`, and so on.
-All 1520 files will go into the same directory.
-
-Now in her current directory `data-shell`,
-Nelle can see what files she has using the command:
-
-~~~
-$ ls north-pacific-gyre/2012-07-03/
-~~~
-{: .language-bash}
-
-This is a lot to type,
-but she can let the shell do most of the work through what is called **tab completion**.
-If she types:
-
-~~~
-$ ls nor
-~~~
-{: .language-bash}
-
-and then presses <kbd>Tab</kbd> (the tab key on her keyboard),
-the shell automatically completes the directory name for her:
-
-~~~
-$ ls north-pacific-gyre/
-~~~
-{: .language-bash}
-
-If she presses <kbd>Tab</kbd> again,
-Bash will add `2012-07-03/` to the command,
-since it's the only possible completion.
-Pressing <kbd>Tab</kbd> again does nothing,
-since there are 19 possibilities;
-pressing <kbd>Tab</kbd> twice brings up a list of all the files,
-and so on.
-This is called **tab completion**,
-and we will see it in many other tools as we go on.
