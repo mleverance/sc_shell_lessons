@@ -131,8 +131,8 @@ $ ls -F Desktop/data-shell
 **Note that we've provided the path to a directory that is contained inside another directory inside our current directory.**
 We can provide arbitrarily long file paths to arbitrarily deep files and folders on our system, as long as they are accurate.
 
-If we want to work with files and folders inside `data-shell`, however, and we don't want to type `Desktop/data-shell` every time, it would be better if **we changed our current working directory to `data-shell`. The command to change locations is `cd` followed by a directory name to change our working directory. `cd` stands for "change directory", which is a bit misleading:
-the command doesn't change the directory, it changes the shell's idea of what directory we are in.**
+If we want to work with files and folders inside `data-shell`, and we don't want to type `Desktop/data-shell` every time, it would be better if we changed our current working directory to `data-shell`. The command to change locations is `cd` followed by a directory name. `cd` stands for "change directory", which is a bit misleading:
+the command doesn't change the directory, it changes the shell's idea of what directory we are in.
 
 ```sh
 cd Desktop
