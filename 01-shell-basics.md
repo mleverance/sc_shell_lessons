@@ -36,13 +36,11 @@ and in most packages that provide Unix-like tools for Windows.
 
 ### Is CLI difficult to use?
 If you haven't used the shell before, it may seem clunky and unrelatable at first. 
-It will take some effort to learn because it's a different way of interacting with the computer than what you're most likely used to. With a GUI you get set choices and you select one. With a **command line interface** (CLI) the choices are combinations of commands and parameters, and because they aren't presented to you, you have to learn a few, like learning vocabulary in a new language. But the plus is that a small
-number of commands gets you a long way, and we'll cover those essential few today.
+It will take some effort to learn because it's a different way of interacting with the computer than what you're most likely used to. With a GUI you get set choices and you select one. With a **command line interface** (CLI) the choices are combinations of commands and parameters, and because they aren't presented to you, you have to learn a few, like learning vocabulary in a new language. But the plus is that a small number of commands gets you a long way, and we'll cover those essential few today.
+> Some places you might see a CLI are webserver, remote computer, copying/moving large files, high performance computing or cluster computing 
 
 ### Activity
-- Discussion
-  - Where are some places you'll encounter a command line interface?
-- Using the etherpad, take a minute to enter answers for these:
+- Talk to one of your neighbors and use the etherpad to enter answers for these:
 - Advantages/disadvantages of CLI
   - advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines
   - disadvantages are its primarily textual nature and how cryptic its commands and operation can be
