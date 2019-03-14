@@ -35,9 +35,8 @@ Bash is the default shell on most modern implementations of Unix
 and in most packages that provide Unix-like tools for Windows.
 
 ### Is CLI difficult to use?
-
-It's a different model of interacting than a GUI, and that
-will take some effort to learn. A GUI presents you with choices and you select one. With a **command line interface** (CLI) the choices are combinations of commands and parameters, more like words in a language than buttons on a screen. They aren't presented to you so you must learn a few, like learning some vocabulary in a new language. But a small
+If you haven't used the shell before, it may seem clunky and unrelatable at first. 
+It will take some effort to learn because it's a different way of interacting with the computer than what you're most likely used to. With a GUI you get set choices and you select one. With a **command line interface** (CLI) the choices are combinations of commands and parameters, and because they aren't presented to you, you have to learn a few, like learning vocabulary in a new language. But the plus is that a small
 number of commands gets you a long way, and we'll cover those essential few today.
 
 ### Activity
@@ -64,7 +63,7 @@ including high-performance computing systems.
 
 ### What does it look like?
 
-Let's take a look at the shell window looks like:
+Here's what the shell window looks like:
 
 ~~~
 SHOW MY SHELL WINDOW
@@ -77,11 +76,13 @@ you are.
 - When you type commands, you *don't type the prompt*, only the commands that follow it.
 
 # Files
-You need to download some files to follow this lesson:
-- open your shell (also called terminal and command line)
-  - on Mac, go to Applications - Utilities - terminal
+You'll need to download some files to use in this lesson:
+- open your shell (which can also be called terminal and command line)
+  - on a Mac, go to Applications - Utilities - terminal
   - on Windows, you should have Git for Windows downloaded
-    - go to Start menu, find Git Bash, and open
+    - go to Start/windows, find Git Bash, and open
+    
+ #### If you need help with the shell, put up a sticky and a helper will come by
 
 ## What to type
 - go to etherpad
