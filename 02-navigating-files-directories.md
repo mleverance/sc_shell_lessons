@@ -80,26 +80,36 @@ The `ls` command stands for "listing;" it's a program that displays the contents
 By default, it prints the names of the files in the current directory in alphabetical order, arranged neatly into columns.
 
 **Programs in the shell often take special options, also called flags, that change the output of the command.**
-The `ls` command accepts a `-F` flag that highlights the names of directories, making it easier to distinguish them from files.
+The `ls` command accepts a `-F` flag that highlights the names of directories, making it easier to distinguish them from files. It will display a slash immediately after each pathname that is a directory.
+
+First let's move to our desktop
+
+```sh
+$ cd Desktop
+```
+then type this
 
 ```sh
 $ ls -F
 ```
 
 We can find out what other options the `ls` command accepts by typing:
-
+Windows
 ```sh
 $ ls --help
 ```
-
-**Note that most of these options can be specified one of two ways: with a single dash or a double-dash.**
-The single dash precedes a single letter; it's basically a shortcut for the double-dash format.
-For example, whether we type `-F` or `--classify` after `ls`, we get the same result.
-
+for Mac, the command is different and it means reading the manual. You'll type
 ```sh
-$ ls -F
-$ ls --classify
+$ man ls
 ```
+- You'll see definitions of what each flag means, which is helpful when you want to refer back or find out what you might use
+- Typing a space will page through the list, or use the arrows to move by line, and typing 'Q' will quit and return you to the prompt
+
+> ## Unsupported command-line options
+> If you try to use an option (flag) that is not supported, `ls` and other commands
+> will usually print an error message 
+> What happens if we type: ls -j
+
 
 In addition to *options,* many commands we can use in the shell accept one or more *arguments.*
 An argument to a command is some input, required or not, that the command will act on.
@@ -110,6 +120,20 @@ $ ls -F Desktop
 ```
 
 **Your output from this command should be a list of the files on your desktop and should include the folder data-shell. Take a moment to confirm that is the case.**
+
+> ## Listing Recursively and By Time
+>
+> The command `ls -R` lists the contents of directories recursively, i.e., lists
+> their sub-directories, sub-sub-directories, and so on at each level. The command
+> `ls -t` lists things by time of last change, with most recently changed files or
+> directories first.
+> In what order does `ls -R -t` display things? Hint: `ls -l` uses a long listing
+> format to view timestamps.
+>
+> > ## Solution
+> > The files/directories in each directory are sorted by time of last change.
+> {: .solution}
+{: .challenge}
 
 ### Changing the Current Working Directory
 
@@ -134,7 +158,12 @@ cd data-shell
 cd data
 ```
 
-The `cd` command stands for "change directory."
+The command to change locations is `cd` followed by a
+directory name to change our working directory.
+`cd` stands for "change directory",
+which is a bit misleading:
+the command doesn't change the directory,
+it changes the shell's idea of what directory we are in.
 Now where are we?
 How can we find out?
 
@@ -225,190 +254,13 @@ $ cd ~/Desktop/data-shell
 - "Directory names in a path are separated with `/` on Unix, but `\\` on Windows."
 - "`..` means 'the directory above the current one'; `.` on its own means 'the current directory'."
 
+
+
+
+
 # regular lesson begins
 
-### Getting help
 
-`ls` has lots of other **flags**. There are two common ways to find out how
-to use a command and what flags it accepts:
-
-1. We can pass a `--help` flag to the command, such as:
-    ~~~
-    $ ls --help
-    ~~~
-    {: .bash}
-
-2. We can read its manual with `man`, such as:
-    ~~~
-    $ man ls
-    ~~~
-    {: .bash}
-
-**Depending on your environment you might find that only one of these works
-(either `man` or `--help`).**
-We'll describe both ways below.
-
-
-#### The `--help` flag
-
-Many bash commands, and programs that people have written that can be
-run from within bash, support a `--help` flag to display more
-information on how to use the command or program.
-
-~~~
-$ ls --help
-~~~
-{: .language-bash}
-
-> ## Unsupported command-line options
-> If you try to use an option (flag) that is not supported, `ls` and other commands
-> will usually print an error message similar to:
->
-> ~~~
-> $ ls -j
-> ~~~
-> {: .language-bash}
->
-> ~~~
-> ls: invalid option -- 'j'
-> Try 'ls --help' for more information.
-> ~~~
-> {: .error}
-{: .callout}
-
-#### The `man` command
-
-The other way to learn about `ls` is to type
-~~~
-$ man ls
-~~~
-{: .bash}
-
-This will turn your terminal into a page with a description
-of the `ls` command and its options and, if you're lucky, some examples
-of how to use it.
-
-To navigate through the `man` pages,
-you may use <kbd>↑</kbd> and <kbd>↓</kbd> to move line-by-line,
-or try <kbd>B</kbd> and <kbd>Spacebar</kbd> to skip up and down by a full page.
-To search for a character or word in the `man` pages,
-use <kbd>/</kbd> followed by the character or word you are searching for.
-Sometimes a search will result in multiple hits.  If so, you can move between hits using <kbd>N</kbd> (for moving forward) and <kbd>Shift</kbd>+<kbd>N</kbd> (for moving backward).
-
-To **quit** the `man` pages, press <kbd>Q</kbd>.
-
-> ## Manual pages on the web
->
-> Of course there is a third way to access help for commands:
-> searching the internet via your web browser.
-> When using internet search, including the phrase `unix man page` in your search
-> query will help to find relevant results.
->
-> GNU provides links to its
-> [manuals](http://www.gnu.org/manual/manual.html) including the
-> [core GNU utilities](http://www.gnu.org/software/coreutils/manual/coreutils.html),
-> which covers many commands introduced within this lesson.
-{: .callout}
-
-> ## Exploring More `ls` Flags
->
-> You can also use two flags at the same time. What does the command `ls` do when used
-> with the `-l` flag? What about if you use both the `-l` and the `-h` flag?
->
-> Some of its output is about properties that we do not cover in this lesson (such
-> as file permissions and ownership), but the rest should be useful
-> nevertheless.
->
-> > ## Solution
-> > The `-l` flag makes `ls` use a **l**ong listing format, showing not only
-> > the file/directory names but also additional information such as the file size
-> > and the time of its last modification. If you use both the `-h` flag and the `-l` flag,
-> > this makes the file size "**h**uman readable", i.e. displaying something like `5.3K`
-> > instead of `5369`.
-> {: .solution}
-{: .challenge}
-
-> ## Listing Recursively and By Time
->
-> The command `ls -R` lists the contents of directories recursively, i.e., lists
-> their sub-directories, sub-sub-directories, and so on at each level. The command
-> `ls -t` lists things by time of last change, with most recently changed files or
-> directories first.
-> In what order does `ls -R -t` display things? Hint: `ls -l` uses a long listing
-> format to view timestamps.
->
-> > ## Solution
-> > The files/directories in each directory are sorted by time of last change.
-> {: .solution}
-{: .challenge}
-
-
-We can also use `ls` to see the contents of a different directory.  Let's take a
-look at our `Desktop` directory by running `ls -F Desktop`,
-i.e.,
-the command `ls` with the `-F` **flag** and the **argument**  `Desktop`.
-The argument `Desktop` tells `ls` that
-we want a listing of something other than our current working directory:
-
-~~~
-$ ls -F Desktop
-~~~
-{: .language-bash}
-
-~~~
-data-shell/
-~~~
-{: .output}
-
-Your output should be a list of all the files and sub-directories on your
-Desktop, including the `data-shell` directory you downloaded at
-the [setup for this lesson]({{ page.root }}{% link setup.md %}).  Take a look at your Desktop to confirm that
-your output is accurate.  
-
-As you may now see, using a bash shell is strongly dependent on the idea that
-your files are organized in a hierarchical file system.
-Organizing things hierarchically in this way helps us keep track of our work:
-it's possible to put hundreds of files in our home directory,
-just as it's possible to pile hundreds of printed papers on our desk,
-but it's a self-defeating strategy.
-
-Now that we know the `data-shell` directory is located on our Desktop, we
-can do two things.  
-
-First, we can look at its contents, using the same strategy as before, passing
-a directory name to `ls`:
-
-~~~
-$ ls -F Desktop/data-shell
-~~~
-{: .language-bash}
-
-~~~
-creatures/          molecules/          notes.txt           solar.pdf
-data/               north-pacific-gyre/ pizza.cfg           writing/
-~~~
-{: .output}
-
-Second, we can actually change our location to a different directory, so
-we are no longer located in
-our home directory.  
-
-The command to change locations is `cd` followed by a
-directory name to change our working directory.
-`cd` stands for "change directory",
-which is a bit misleading:
-the command doesn't change the directory,
-it changes the shell's idea of what directory we are in.
-
-Let's say we want to move to the `data` directory we saw above.  We can
-use the following series of commands to get there:
-
-~~~
-$ cd Desktop
-$ cd data-shell
-$ cd data
-~~~
-{: .language-bash}
 
 These commands will move us from our home directory onto our Desktop, then into
 the `data-shell` directory, then into the `data` directory.  You will notice that `cd` doesn't print anything.  This is normal.  Many shell commands will not output anything to the screen when successfully executed.  But if we run `pwd` after it, we can see that we are now
