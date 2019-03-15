@@ -21,16 +21,20 @@ Mary Leverance
   - Have it open in a browser because we'll be pasting information for you there
   - https://pad.carpentries.org/2019-03-18-uark
   - Everyone welcome to add notes or questions
-  - If you're already familiar with a concept, welcome to help out by adding notes to the etherpad
+  - Workshop geared towards people who are beginners and new to these topics
+  - If you're already familiar with a concept, welcome to help out by adding notes to the etherpad or help your peers
 - Further practice and additional learning resources
   - All lessons will be available online after the workshop via link in etherpad
 
 # Getting help
 - Sticky notes
-  - Used for getting help in real time from helpers and for providing feedback at end of each topic
+  - Used like flags for either getting help in real time from helpers or letting us know you're good
     - Blue: we're cool
     - Yellow: think of it like a caution or slow down signal, "please assist"
-- Peer learning - will sometimes work with the person next to you, which leads us to...
+  - Put sticky on side of your computer for now, we'll do periodic sticky checks
+- Peer learning
+  - Are you familiar with these concepts? Feel free to act as an impromptu helper 
+  - Sometimes you'll work with the person next to you
 
 # Ice Breaker
 - Let's take a couple minutes to get to know each other
