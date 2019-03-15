@@ -79,7 +79,7 @@ It's an easy question to answer when there are only six files,
 but what if there were 6000?
 Our first step toward a solution is to run a command that tells the shell to **redirect** the command's output
 to a file instead of printing it to the screen.
-> The greater than symbol, `>`, tells the shell to **redirect**
+> The greater than symbol tells the shell to **redirect**
 > The file we specify receives the output
 > - If the file doesn't exist, the shell will create it
 > - If the file does exist, it will be overwritten, so be sure you're using an accurate filename
@@ -176,9 +176,14 @@ Now let's use the `sort` command to sort its contents.
 >
 > Explain why `-n` has this effect.
 >
+>
+>
+>
+>
+>
 > > ## Solution
 > > The `-n` flag specifies a numerical rather than an alphanumerical sort.
-> {: .solution}
+> 
 
 
 We will also use the `-n` flag to specify that the sort is
@@ -189,7 +194,7 @@ instead, it sends the sorted result to the screen:
 ~~~
 $ sort -n lengths.txt
 ~~~
-{: .language-bash}
+
 
 ~~~
   9  methane.pdb
@@ -200,32 +205,10 @@ $ sort -n lengths.txt
  30  octane.pdb
 107  total
 ~~~
-{: .output}
+
 
 We can put the sorted list of lines in another temporary file called `sorted-lengths.txt`
-by putting `> sorted-lengths.txt` after the command,
-just as we used `> lengths.txt` to put the output of `wc` into `lengths.txt`.
-Once we've done that,
-we can run another command called `head` to get the first few lines in `sorted-lengths.txt`:
-
-~~~
-$ sort -n lengths.txt > sorted-lengths.txt
-$ head -n 1 sorted-lengths.txt
-~~~
-{: .language-bash}
-
-~~~
-  9  methane.pdb
-~~~
-{: .output}
-
-Using `-n 1` with `head` tells it that
-we only want the first line of the file;
-`-n 20` would get the first 20,
-and so on.
-Since `sorted-lengths.txt` contains the lengths of our files ordered from least to greatest,
-the output of `head` must be the file with the fewest lines.
-
+by putting `> sorted-lengths.txt` after the command.
 > ## Redirecting to the same file
 >
 > It's a very bad idea to try redirecting
@@ -233,43 +216,61 @@ the output of `head` must be the file with the fewest lines.
 > to the same file. For example:
 >
 > ~~~
-> $ sort -n lengths.txt > lengths.txt
+> using lengths.txt > lengths.txt
 > ~~~
-> {: .language-bash}
 >
-> Doing something like this may give you
+> may give you
 > incorrect results and/or delete
 > the contents of `lengths.txt`.
-{: .callout}
+
+~~~
+$ sort -n lengths.txt > sorted-lengths.txt
+~~~
+
+Once we've done that, we can run another command called `head` to get the first 10 lines in `sorted-lengths.txt`:
+'head' prints the first 10 lines of a file (or files, if you're looking at multiple) to the output you specify (the default is the terminal, but we saw how you can print to a file using the > command)
+
+We're going to use `-n 1` with `head` to tell it that we only want the first line of the file;
+`-n 20` would get the first 20, and so on.
+
+~~~
+$ head -n 1 sorted-lengths.txt
+~~~
+
+Results in the first line of the file
+~~~
+  9  methane.pdb
+~~~
+
 
 > ## What Does `>>` Mean?
 >
-> We have seen the use of `>`, but there is a similar operator `>>` which works slightly differently.
+> We have seen the use of **redirect** `>`, but there is a similar operator `>>` which works slightly differently.
 > We'll learn about the differences between these two operators by printing some strings.
-> We can use the `echo` command to print strings e.g.
+> We can use the `echo` command to print text. It's a handy way to create customized output in your terminal.
 >
 > ~~~
 > $ echo The echo command prints text
 > ~~~
-> {: .language-bash}
+> 
 > ~~~
 > The echo command prints text
 > ~~~
-> {: .output}
+> 
 >
 > Now test the commands below to reveal the difference between the two operators:
 >
 > ~~~
 > $ echo hello > testfile01.txt
 > ~~~
-> {: .language-bash}
+> 
 >
 > and:
 >
 > ~~~
 > $ echo hello >> testfile02.txt
 > ~~~
-> {: .language-bash}
+> 
 >
 > Hint: Try executing each command twice in a row and then examining the output files.
 >
@@ -280,8 +281,7 @@ the output of `head` must be the file with the fewest lines.
 > > We see from the second example that the `>>` operator also writes "hello" to a file
 > > (in this case`testfile02.txt`),
 > > but appends the string to the file if it already exists (i.e. when we run it for the second time).
-> {: .solution}
-{: .challenge}
+> 
 
 > ## Appending Data
 >
