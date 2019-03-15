@@ -230,7 +230,8 @@ Results in the first line of the file
   9  methane.pdb
 ~~~
 
-> ### Side Note that there is also a command called `tail` that will print the last 10 lines of the file or files
+> ### Side Note:
+> there is also a command called `tail` that will print the last 10 lines of the file or files
 
 > ## What Does `>>` Mean?
 >
@@ -266,10 +267,10 @@ Results in the first line of the file
 > What do you see when you look at it?
 > 
 
-
-even once you understand what `wc`, `sort`, and `head` do,
-all those intermediate files make it hard to follow what's going on.
-We can make it easier to understand by running `sort` and `head` together:
+## New concept: Pipes
+An advantage of the shell is the ability to run commands on the same line instead of separately. Kind of like nesting functions in math.  
+A pipe is a temporary section of computer memory capable of linking two or more computer processors, increasing the overall efficiency of the computer.  
+For example, we can run `sort` and `head` together:
 
 ~~~
 $ sort -n lengths.txt | head -n 1
@@ -279,7 +280,6 @@ $ sort -n lengths.txt | head -n 1
 ~~~
   9  methane.pdb
 ~~~
-{: .output}
 
 The vertical bar, `|`, between the two commands is called a **pipe**.
 It tells the shell that we want to use
@@ -293,7 +293,7 @@ we don't have to know or care.
 Nothing prevents us from chaining pipes consecutively.
 That is, we can for example send the output of `wc` directly to `sort`,
 and then the resulting output to `head`.
-Thus we first use a pipe to send the output of `wc` to `sort`:
+We first use a pipe to send the output of `wc` to `sort`:
 
 ~~~
 $ wc -l *.pdb | sort -n
@@ -320,11 +320,6 @@ $ wc -l *.pdb | sort -n | head -n 1
    9  methane.pdb
 ~~~
 
-
-This is exactly like a mathematician nesting functions like *log(3x)*
-and saying "the log of three times *x*".
-In our case,
-the calculation is "head of sort of line count of `*.pdb`".
 
 > ## Piping Commands Together
 >
