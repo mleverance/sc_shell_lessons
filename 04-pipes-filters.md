@@ -236,7 +236,7 @@ Results in the first line of the file
 >
 > We have seen the use of **redirect** `>`, but there is a similar operator `>>` which works slightly differently. 
 > It **redirects** AND **appends** to a file.
-> We'll learn about the differences between these two operators by printing some strings.
+> Another new command is `echo`, which means what it sounds like - echoing information back to you.
 > We can use the `echo` command to print text. It's a handy way to create customized output in your terminal.
 >
 > ~~~
@@ -262,7 +262,8 @@ Results in the first line of the file
 > $ echo goodbye >> test.txt
 > ~~~
 > 
-> How do you view the contents of the file, and what do you see when you look at it?
+> How do you view the contents of the file?
+> What do you see when you look at it?
 > 
 
 
@@ -273,7 +274,7 @@ We can make it easier to understand by running `sort` and `head` together:
 ~~~
 $ sort -n lengths.txt | head -n 1
 ~~~
-{: .language-bash}
+
 
 ~~~
   9  methane.pdb
@@ -297,7 +298,6 @@ Thus we first use a pipe to send the output of `wc` to `sort`:
 ~~~
 $ wc -l *.pdb | sort -n
 ~~~
-{: .language-bash}
 
 ~~~
    9 methane.pdb
@@ -308,19 +308,18 @@ $ wc -l *.pdb | sort -n
   30 octane.pdb
  107 total
 ~~~
-{: .output}
 
 And now we send the output of this pipe, through another pipe, to `head`, so that the full pipeline becomes:
 
 ~~~
 $ wc -l *.pdb | sort -n | head -n 1
 ~~~
-{: .language-bash}
+
 
 ~~~
    9  methane.pdb
 ~~~
-{: .output}
+
 
 This is exactly like a mathematician nesting functions like *log(3x)*
 and saying "the log of three times *x*".
