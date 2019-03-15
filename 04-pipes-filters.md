@@ -7,11 +7,11 @@ exercises: 10
 
 Now that we know a few basic commands,
 we can look at a powerful feature of the shell:
-the ease with which it lets us combine existing programs in new ways.
+the ease with which it lets us combine existing programs in new ways.  
 We'll start with a directory called `molecules`
 that contains six files describing some simple organic molecules.
 The `.pdb` extension indicates that these files are in Protein Data Bank format,
-a simple text format that specifies the type and position of each atom in the molecule.
+a simple text format that specifies the type and position of each atom in the molecule.  
 
 Let's navigate to the molecules directory, which is a subdirectory of the data-shell directory
 ```sh
@@ -136,55 +136,7 @@ We see the number of lines for each file next to the filename
 > or back one by pressing `b`.  Press `q` to quit.
 
 
-Now let's use the `sort` command to sort its contents.
-
-> ## EXERCISE
-> ## What Does `sort -n` Do?
->
-> If we run `sort` on a file containing the following lines:
->
-> ~~~
-> 10
-> 2
-> 19
-> 22
-> 6
-> ~~~
-> 
->
-> the output is:
->
-> ~~~
-> 10
-> 19
-> 2
-> 22
-> 6
-> ~~~
-> 
->
-> If we run `sort -n` on the same input, we get this instead:
->
-> ~~~
-> 2
-> 6
-> 10
-> 19
-> 22
-> ~~~
-> 
->
-> Explain why `-n` has this effect.
->
->
->
->
->
->
-> > ## Solution
-> > The `-n` flag specifies a numerical rather than an alphanumerical sort.
-> 
-
+Now let's use the `sort` command to sort its contents.  
 
 We will also use the `-n` flag to specify that the sort is
 numerical instead of alphanumerical.
@@ -291,7 +243,7 @@ or something else entirely;
 we don't have to know or care.
 
 Nothing prevents us from chaining pipes consecutively.
-That is, we can for example send the output of `wc` directly to `sort`,
+That is, we can send the output of `wc` directly to `sort`,
 and then the resulting output to `head`.
 We first use a pipe to send the output of `wc` to `sort`:
 
@@ -310,7 +262,8 @@ $ wc -l *.pdb | sort -n
 ~~~
 
 And now we send the output of this pipe, through another pipe, to `head`, so that the full pipeline becomes:
-
+> ### Tip
+> Using the up arrow will scroll through your previous commands so you don't have to retype the whole thing here
 ~~~
 $ wc -l *.pdb | sort -n | head -n 1
 ~~~
@@ -331,26 +284,25 @@ $ wc -l *.pdb | sort -n | head -n 1
 > 3. `wc -l * | head -n 3 | sort -n`
 > 4. `wc -l * | sort -n | head -n 3`
 >
+>
+>
 > > ## Solution
 > > Option 4 is the solution.
 > > The pipe character `|` is used to feed the standard output from one process to
 > > the standard input of another.
 > > `>` is used to redirect standard output to a file.
 > > Try it in the `data-shell/molecules` directory!
-> {: .solution}
-{: .challenge}
 
+
+
+## Slide: processes using the shell
 Here's what actually happens behind the scenes when we create a pipe.
 When a computer runs a program --- any program --- it creates a **process**
-in memory to hold the program's software and its current state.
-Every process has an input channel called **standard input**.
-(By this point, you may be surprised that the name is so memorable, but don't worry:
-most Unix programmers call it "stdin").
+in memory to hold the program's software and its current state.  
+Every process has an input channel called **standard input**.  
+
 Every process also has a default output channel called **standard output**
-(or "stdout"). A second output channel called **standard error** (stderr) also
-exists. This channel is typically used for error or diagnostic messages, and it
-allows a user to pipe the output of one program into another while still receiving 
-error messages in the terminal. 
+(or "stdout").  
 
 The shell is actually just another program.
 Under normal circumstances,
@@ -361,30 +313,8 @@ it creates a new process
 and temporarily sends whatever we type on our keyboard to that process's standard input,
 and whatever the process sends to standard output to the screen.
 
-Here's what happens when we run `wc -l *.pdb > lengths.txt`.
-The shell starts by telling the computer to create a new process to run the `wc` program.
-Since we've provided some filenames as arguments,
-`wc` reads from them instead of from standard input.
-And since we've used `>` to redirect output to a file,
-the shell connects the process's standard output to that file.
-
-If we run `wc -l *.pdb | sort -n` instead,
-the shell creates two processes
-(one for each process in the pipe)
-so that `wc` and `sort` run simultaneously.
-The standard output of `wc` is fed directly to the standard input of `sort`;
-since there's no redirection with `>`,
-`sort`'s output goes to the screen.
-And if we run `wc -l *.pdb | sort -n | head -n 1`,
-we get three processes with data flowing from the files,
-through `wc` to `sort`,
-and from `sort` through `head` to the screen.
-
-![Redirects and Pipes](../fig/redirects-and-pipes.png)
-
-This simple idea is why Unix has been so successful.
 Instead of creating enormous programs that try to do many different things,
-Unix programmers focus on creating lots of simple tools that each do one job well,
+Unix programmers created lots of simple tools that each do one job well,
 and that work well with each other.
 This programming model is called "pipes and filters".
 We've already seen pipes;
@@ -394,109 +324,10 @@ Almost all of the standard Unix tools can work this way:
 unless told to do otherwise,
 they read from standard input,
 do something with what they've read,
-and write to standard output.
+and write to standard output.  
 
-The key is that any program that reads lines of text from standard input
-and writes lines of text to standard output
-can be combined with every other program that behaves this way as well.
-You can *and should* write your programs this way
-so that you and other people can put those programs into pipes to multiply their power.
 
-> ## Redirecting Input
->
-> As well as using `>` to redirect a program's output, we can use `<` to
-> redirect its input, i.e., to read from a file instead of from standard
-> input. For example, instead of writing `wc ammonia.pdb`, we could write
-> `wc < ammonia.pdb`. In the first case, `wc` gets a command line
-> argument telling it what file to open. In the second, `wc` doesn't have
-> any command line arguments, so it reads from standard input, but we
-> have told the shell to send the contents of `ammonia.pdb` to `wc`'s
-> standard input.
-{: .callout}
 
-> ## What Does `<` Mean?
->
-> Change directory to `data-shell` (the top level of our downloaded example data).
->
-> What is the difference between:
->
-> ~~~
-> $ wc -l notes.txt
-> ~~~
-> {: .language-bash}
->
-> and:
->
-> ~~~
-> $ wc -l < notes.txt
-> ~~~
-> {: .language-bash}
->
-> > ## Solution
-> > `<` is used to redirect input to a command. 
-> >
-> > In both examples, the shell returns the number of lines from the input to
-> > the `wc` command.
-> > In the first example, the input is the file `notes.txt` and the file name is
-> > given in the output from the `wc` command.
-> > In the second example, the contents of the file `notes.txt` are redirected to
-> > standard input.
-> > It is as if we have entered the contents of the file by typing at the prompt.
-> > Hence the file name is not given in the output - just the number of lines.
-> > Try this for yourself:
-> >
-> > ```
-> > $ wc -l
-> > this
-> > is
-> > a test
-> > Ctrl-D # This lets the shell know you have finished typing the input
-> > ```
-> > {: .language-bash}
-> >
-> > ```
-> > 3
-> > ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Why Does `uniq` Only Remove Adjacent Duplicates?
->
-> The command `uniq` removes adjacent duplicated lines from its input.
-> For example, the file `data-shell/data/salmon.txt` contains:
->
-> ~~~
-> coho
-> coho
-> steelhead
-> coho
-> steelhead
-> steelhead
-> ~~~
-> {: .source}
->
-> Running the command `uniq salmon.txt` from the `data-shell/data` directory produces:
->
-> ~~~
-> coho
-> steelhead
-> coho
-> steelhead
-> ~~~
-> {: .output}
->
-> Why do you think `uniq` only removes *adjacent* duplicated lines?
-> (Hint: think about very large data sets.) What other command could
-> you combine with it in a pipe to remove all duplicated lines?
->
-> > ## Solution
-> > ```
-> > $ sort salmon.txt | uniq
-> > ```
-> > {: .language-bash}
-> {: .solution}
-{: .challenge}
 
 > ## Pipe Reading Comprehension
 >
@@ -512,14 +343,14 @@ so that you and other people can put those programs into pipes to multiply their
 > 2012-11-07,rabbit
 > 2012-11-07,bear
 > ~~~
-> {: .source}
+> 
 >
 > What text passes through each of the pipes and the final redirect in the pipeline below?
 >
 > ~~~
 > $ cat animals.txt | head -n 5 | tail -n 3 | sort -r > final.txt
 > ~~~
-> {: .language-bash}
+> 
 > Hint: build the pipeline up one command at a time to test your understanding
 > > ## Solution
 > > The `head` command extracts the first 5 lines from `animals.txt`.
@@ -533,76 +364,10 @@ so that you and other people can put those programs into pipes to multiply their
 > > 2012-11-06,deer
 > > 2012-11-05,raccoon
 > > ```
-> > {: .source}
-> {: .solution}
-{: .challenge}
+> >
 
-> ## Pipe Construction
->
-> For the file `animals.txt` from the previous exercise, the command:
->
-> ~~~
-> $ cut -d , -f 2 animals.txt
-> ~~~
-> {: .language-bash}
-> 
-> uses the `-d` flag to separate each line by comma, and the `-f` flag
-> to print the second field in each line, to give the following output:
->
-> ~~~
-> deer
-> rabbit
-> raccoon
-> rabbit
-> deer
-> fox
-> rabbit
-> bear
-> ~~~
-> {: .output}
->
-> What other command(s) could be added to this in a pipeline to find
-> out what animals the file contains (without any duplicates in their
-> names)?
->
-> > ## Solution
-> > ```
-> > $ cut -d , -f 2 animals.txt | sort | uniq
-> > ```
-> > {: .language-bash}
-> {: .solution}
-{: .challenge}
 
-> ## Which Pipe?
->
-> The file `animals.txt` contains 8 lines of data formatted as follows:
->
-> ~~~
-> 2012-11-05,deer
-> 2012-11-05,rabbit
-> 2012-11-05,raccoon
-> 2012-11-06,rabbit
-> ...
-> ~~~
-> {: .output}
->
-> Assuming your current directory is `data-shell/data/`,
-> what command would you use to produce a table that shows
-> the total count of each type of animal in the file?
->
-> 1.  `grep {deer, rabbit, raccoon, deer, fox, bear} animals.txt | wc -l`
-> 2.  `sort animals.txt | uniq -c`
-> 3.  `sort -t, -k2,2 animals.txt | uniq -c`
-> 4.  `cut -d, -f 2 animals.txt | uniq -c`
-> 5.  `cut -d, -f 2 animals.txt | sort | uniq -c`
-> 6.  `cut -d, -f 2 animals.txt | sort | uniq -c | wc -l`
->
-> > ## Solution
-> > Option 5. is the correct answer.
-> > If you have difficulty understanding why, try running the commands, or sub-sections of
-> > the pipelines (make sure you are in the `data-shell/data` directory).
-> {: .solution}
-{: .challenge}
+
 
 ## Nelle's Pipeline: Checking Files
 
