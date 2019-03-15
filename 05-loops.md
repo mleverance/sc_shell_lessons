@@ -1,61 +1,42 @@
----
-title: "Loops"
-teaching: 40
-exercises: 10
+# Loops
+teaching: 40 / 
+exercises: 10  
 questions:
 - "How can I perform the same actions on many different files?"
-objectives:
-- "Write a loop that applies one or more commands separately to each file in a set of files."
-- "Trace the values taken on by a loop variable during execution of the loop."
-- "Explain the difference between a variable's name and its value."
-- "Explain why spaces and some punctuation characters shouldn't be used in file names."
-- "Demonstrate how to see what commands have recently been executed."
-- "Re-run recently executed commands without retyping them."
-keypoints:
-- "A `for` loop repeats commands once for every thing in a list."
-- "Every `for` loop needs a variable to refer to the thing it is currently operating on."
-- "Use `$name` to expand a variable (i.e., get its value). `${name}` can also be used."
-- "Do not use spaces, quotes, or wildcard characters such as '*' or '?' in filenames, as it complicates variable expansion."
-- "Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping."
-- "Use the up-arrow key to scroll up through previous commands to edit and repeat them."
-- "Use `Ctrl-R` to search through the previously entered commands."
-- "Use `history` to display recent commands, and `!number` to repeat a command by number."
 ---
 
 **Loops** are key to productivity improvements through automation as they allow us to execute
 commands repeatedly. Similar to wildcards and tab completion, using loops also reduces the
-amount of typing (and typing mistakes).
-Suppose we have several hundred genome data files named `basilisk.dat`, `unicorn.dat`, and so on.
-In this example,
-we'll use the `creatures` directory which only has two example files,
+amount of typing (and typing mistakes).   
+
+We're going to learn about loops by modifying files, saving versions of the original, and renaming the copies.
+
+Let's navigate to the `creatures` directory. There are only has two example files here,
 but the principles can be applied to many many more files at once.
-We would like to modify these files, but also save a version of the original files, naming the copies
+```sh
+$ cd
+$ cd Desktop/data-shell/creatures
+$ ls
+$ basilisk.dat unicorn.dat
+```
+We want to modify these files, but also save a version of the original files, naming the copies
 `original-basilisk.dat` and `original-unicorn.dat`.
-We can't use:
 
-~~~
-$ cp *.dat original-*.dat
-~~~
-{: .language-bash}
-
-because that would expand to:
-
+Let's try the `cp` copy command:
 ~~~
 $ cp basilisk.dat unicorn.dat original-*.dat
 ~~~
-{: .language-bash}
 
-This wouldn't back up our files, instead we get an error:
-
+Uh oh, this doesn't work and we get an error:
 ~~~
 cp: target `original-*.dat' is not a directory
 ~~~
-{: .error}
+
 
 This problem arises when `cp` receives more than two inputs. When this happens, it
 expects the last input to be a directory where it can copy all the files it was passed.
-Since there is no directory named `original-*.dat` in the `creatures` directory we get an
-error.
+So it expected `original-*.dat` to be the directory.  
+Since there is no directory with that name in the `creatures` directory we get an error.
 
 Instead, we can use a **loop**
 to do some operation once for each thing in a list.
