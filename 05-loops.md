@@ -62,12 +62,11 @@ UPDATED: 1738-11-24
 > ### Prompt
 > The shell prompt changes from `$` to `>` and back again as we were
 > typing in our loop. The second prompt, `>`, is different to remind
-> us that we haven't finished typing a complete command yet. A semicolon, `;`,
-> can be used to separate two commands written on a single line.
+> us that we haven't finished typing a complete command yet. 
 
 > ### Indentation of code within a for loop
-> Note that it is common practice to indent the line(s) of code within a for loop.
-> The only purpose is to make the code easier to read -- it is not required for the loop to run.
+> It's common practice to indent the line(s) of code within a for loop.
+> It makes the code easier to read -- it is not required for the loop to run.
 
 When the shell sees the keyword `for`,
 it knows to repeat a command (or group of commands) once for each item in a list.
@@ -183,34 +182,6 @@ increase the odds that the program won't do what its readers think it does.
 > >
 
 
-> ## Saving to a File in a Loop - Part One
->
-> In the `data-shell/molecules` directory, what is the effect of this loop?
->
-> ~~~
-> for alkanes in *.pdb
-> do
->     echo $alkanes
->     cat $alkanes > alkanes.pdb
-> done
-> ~~~
-> 
->
-> 1.  Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb`,
->     and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
-> 2.  Prints `cubane.pdb`, `ethane.pdb`, and `methane.pdb`, and the text from all three files would be
->     concatenated and saved to a file called `alkanes.pdb`.
-> 3.  Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and `pentane.pdb`, and the text
->     from `propane.pdb` will be saved to a file called `alkanes.pdb`.
-> 4.  None of the above.
->
-> > ## Solution
-> > 1. The text from each file in turn gets written to the `alkanes.pdb` file.
-> > However, the file gets overwritten on each loop interation, so the final content of `alkanes.pdb`
-> > is the text from the `propane.pdb` file.
-> 
-
-
 Let's continue with our example in the `data-shell/creatures` directory.
 Here's a slightly more complicated loop:
 
@@ -255,61 +226,24 @@ $ for filename in *.dat
 >     head -n 100 $filename | tail -n 20
 > done
 ~~~
-{: .language-bash}
 
 because then the first time through the loop,
-when `$filename` expanded to `basilisk.dat`, the shell would try to run `basilisk.dat` as a program.
-Finally,
-the `head` and `tail` combination selects lines 81-100
-from whatever file is being processed
-(assuming the file has at least 100 lines).
+when `$filename` expanded to `basilisk.dat`, the shell would try to run `basilisk.dat` as a program.  
 
-> ## Spaces in Names
+Finally, the pipe of `head` and `tail` selects lines 81-100
+from whatever file is being processed (assuming the file has at least 100 lines).  
+The output of the command `head` on the left of the pipe is used as the input to the command of `tail` on the right.  
+The first 100 lines are selected, and then the last 20 lines of those first 100 are printed for each file.
+
+> ## Pro tip
+> If you use Spaces in Names
 >
 > Spaces are used to separate the elements of the list
-> that we are going to loop over. If one of those elements
+> that we are going to loop over. 
+> If one of those elements
 > contains a space character, we need to surround it with
 > quotes, and do the same thing to our loop variable.
-> Suppose our data files are named:
->
-> ~~~
-> red dragon.dat
-> purple unicorn.dat
-> ~~~
-> {: .source}
-> 
-> To loop over these files, we would need to add double quotes like so:
-> 
-> ~~~
-> $ for filename in "red dragon.dat" "purple unicorn.dat"
-> > do
-> >     head -n 100 "$filename" | tail -n 20
-> > done
-> ~~~
-> {: .language-bash}
->
-> It is simpler just to avoid using spaces (or other special characters) in filenames.
->
-> The files above don't exist, so if we run the above code, the `head` command will be unable
-> to find them, however the error message returned will show the name of the files it is
-> expecting:
-> ```
-> head: cannot open ‘red dragon.dat’ for reading: No such file or directory
-> head: cannot open ‘purple unicorn.dat’ for reading: No such file or directory
-> ```
-> {: .output}
-> Try removing the quotes around `$filename` in the loop above to see the effect of the quote
-> marks on spaces. Note that we get a result from the loop command for unicorn.dat when we run this code in the `creatures` directory:
-> ```
-> head: cannot open ‘red’ for reading: No such file or directory
-> head: cannot open ‘dragon.dat’ for reading: No such file or directory
-> head: cannot open ‘purple’ for reading: No such file or directory
-> CGGTACCGAA
-> AAGGGTCGCG
-> CAAGTGTTCC
-> ```
-> {: . output}
-{: .callout}
+
 
 Going back to our original file copying problem,
 we can solve it using this loop:
@@ -320,7 +254,7 @@ $ for filename in *.dat
 >     cp $filename original-$filename
 > done
 ~~~
-{: .language-bash}
+
 
 This loop runs the `cp` command once for each filename.
 The first time,
@@ -330,14 +264,12 @@ the shell executes:
 ~~~
 cp basilisk.dat original-basilisk.dat
 ~~~
-{: .language-bash}
 
 The second time, the command is:
 
 ~~~
 cp unicorn.dat original-unicorn.dat
 ~~~
-{: .language-bash}
 
 Since the `cp` command does not normally produce any output, it's hard to check 
 that the loop is doing the correct thing. By prefixing the command with `echo` 
