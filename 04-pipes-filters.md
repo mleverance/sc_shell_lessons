@@ -60,7 +60,6 @@ the output shows only the number of lines per file:
 ~~~
 $ wc -l *.pdb
 ~~~
-{: .language-bash}
 
 ~~~
   20  cubane.pdb
@@ -71,7 +70,6 @@ $ wc -l *.pdb
   15  propane.pdb
  107  total
 ~~~
-{: .output}
 
 We can also use `-w` to get only the number of words,
 or `-c` to get only the number of characters.
@@ -79,33 +77,33 @@ or `-c` to get only the number of characters.
 Which of these files contains the fewest lines?
 It's an easy question to answer when there are only six files,
 but what if there were 6000?
-Our first step toward a solution is to run the command:
+Our first step toward a solution is to run a command that tells the shell to **redirect** the command's output
+to a file instead of printing it to the screen.
+> The greater than symbol, `>`, tells the shell to **redirect**
+> The file we specify receives the output
+> - If the file doesn't exist, the shell will create it
+> - If the file does exist, it will be overwritten, so be sure you're using an accurate filename
+
+We'll tell the shell to redirect the output into a file called 'lengths.txt'
+
+Here's what to type on the command line:
 
 ~~~
 $ wc -l *.pdb > lengths.txt
 ~~~
-{: .language-bash}
 
-The greater than symbol, `>`, tells the shell to **redirect** the command's output
-to a file instead of printing it to the screen. (This is why there is no screen output:
-everything that `wc` would have printed has gone into the
-file `lengths.txt` instead.)  The shell will create
-the file if it doesn't exist. If the file exists, it will be
-silently overwritten, which may lead to data loss and thus requires
-some caution.
-`ls lengths.txt` confirms that the file exists:
+It doesn't look like anything happened. We can check for the file's existence by entering:
 
 ~~~
 $ ls lengths.txt
 ~~~
-{: .language-bash}
 
 ~~~
 lengths.txt
 ~~~
-{: .output}
 
-We can now send the content of `lengths.txt` to the screen using `cat lengths.txt`.
+
+We can send the content of `lengths.txt` to the screen using `cat lengths.txt`.
 `cat` stands for "concatenate":
 it prints the contents of files one after another.
 There's only one file in this case,
@@ -114,8 +112,8 @@ so `cat` just shows us what it contains:
 ~~~
 $ cat lengths.txt
 ~~~
-{: .language-bash}
 
+We see the number of lines for each file next to the filename
 ~~~
   20  cubane.pdb
   12  ethane.pdb
@@ -125,7 +123,7 @@ $ cat lengths.txt
   15  propane.pdb
  107  total
 ~~~
-{: .output}
+
 
 > ## Output Page by Page
 >
@@ -136,10 +134,11 @@ $ cat lengths.txt
 > This displays a screenful of the file, and then stops.
 > You can go forward one screenful by pressing the spacebar,
 > or back one by pressing `b`.  Press `q` to quit.
-{: .callout}
+
 
 Now let's use the `sort` command to sort its contents.
 
+> ## EXERCISE
 > ## What Does `sort -n` Do?
 >
 > If we run `sort` on a file containing the following lines:
@@ -151,7 +150,7 @@ Now let's use the `sort` command to sort its contents.
 > 22
 > 6
 > ~~~
-> {: .source}
+> 
 >
 > the output is:
 >
@@ -162,7 +161,7 @@ Now let's use the `sort` command to sort its contents.
 > 22
 > 6
 > ~~~
-> {: .output}
+> 
 >
 > If we run `sort -n` on the same input, we get this instead:
 >
@@ -173,14 +172,14 @@ Now let's use the `sort` command to sort its contents.
 > 19
 > 22
 > ~~~
-> {: .output}
+> 
 >
 > Explain why `-n` has this effect.
 >
 > > ## Solution
 > > The `-n` flag specifies a numerical rather than an alphanumerical sort.
 > {: .solution}
-{: .challenge}
+
 
 We will also use the `-n` flag to specify that the sort is
 numerical instead of alphanumerical.
