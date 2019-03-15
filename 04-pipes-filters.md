@@ -209,19 +209,7 @@ $ sort -n lengths.txt
 
 We can put the sorted list of lines in another temporary file called `sorted-lengths.txt`
 by putting `> sorted-lengths.txt` after the command.
-> ## Redirecting to the same file
->
-> It's a very bad idea to try redirecting
-> the output of a command that operates on a file
-> to the same file. For example:
->
-> ~~~
-> using lengths.txt > lengths.txt
-> ~~~
->
-> may give you
-> incorrect results and/or delete
-> the contents of `lengths.txt`.
+> Tip: don't redirect to the same file, use a different filename
 
 ~~~
 $ sort -n lengths.txt > sorted-lengths.txt
@@ -242,10 +230,12 @@ Results in the first line of the file
   9  methane.pdb
 ~~~
 
+> ### Side Note that there is also a command called `tail` that will print the last 10 lines of the file or files
 
 > ## What Does `>>` Mean?
 >
-> We have seen the use of **redirect** `>`, but there is a similar operator `>>` which works slightly differently.
+> We have seen the use of **redirect** `>`, but there is a similar operator `>>` which works slightly differently. 
+> It **redirects** AND **appends** to a file.
 > We'll learn about the differences between these two operators by printing some strings.
 > We can use the `echo` command to print text. It's a handy way to create customized output in your terminal.
 >
@@ -258,61 +248,24 @@ Results in the first line of the file
 > ~~~
 > 
 >
-> Now test the commands below to reveal the difference between the two operators:
->
+> We know that using redirect will put the command's output into a file instead of printing it on the screen,
+> so let's do that and look at what's in the file:
 > ~~~
-> $ echo hello > testfile01.txt
-> ~~~
-> 
->
-> and:
->
-> ~~~
-> $ echo hello >> testfile02.txt
+> $ echo hello > test.txt
+> $ cat test.txt
+> $ hello
 > ~~~
 > 
+> Now we'll use the **append** command to add to that file
 >
-> Hint: Try executing each command twice in a row and then examining the output files.
->
-> > ## Solution
-> > In the first example with `>`, the string "hello" is written to `testfile01.txt`,
-> > but the file gets overwritten each time we run the command.
-> >
-> > We see from the second example that the `>>` operator also writes "hello" to a file
-> > (in this case`testfile02.txt`),
-> > but appends the string to the file if it already exists (i.e. when we run it for the second time).
+> ~~~
+> $ echo goodbye >> test.txt
+> ~~~
+> 
+> How do you view the contents of the file, and what do you see when you look at it?
 > 
 
-> ## Appending Data
->
-> We have already met the `head` command, which prints lines from the start of a file.
-> `tail` is similar, but prints lines from the end of a file instead.
->
-> Consider the file `data-shell/data/animals.txt`.
-> After these commands, select the answer that
-> corresponds to the file `animalsUpd.txt`:
->
-> ~~~
-> $ head -n 3 animals.txt > animalsUpd.txt
-> $ tail -n 2 animals.txt >> animalsUpd.txt
-> ~~~
-> {: .language-bash}
->
-> 1. The first three lines of `animals.txt`
-> 2. The last two lines of `animals.txt`
-> 3. The first three lines and the last two lines of `animals.txt`
-> 4. The second and third lines of `animals.txt`
->
-> > ## Solution
-> > Option 3 is correct. 
-> > For option 1 to be correct we would only run the `head` command.
-> > For option 2 to be correct we would only run the `tail` command.
-> > For option 4 to be correct we would have to pipe the output of `head` into `tail -2` by doing `head -3 animals.txt | tail -2 > animalsUpd.txt`
-> {: .solution}
-{: .challenge}
 
-If you think this is confusing,
-you're in good company:
 even once you understand what `wc`, `sort`, and `head` do,
 all those intermediate files make it hard to follow what's going on.
 We can make it easier to understand by running `sort` and `head` together:
