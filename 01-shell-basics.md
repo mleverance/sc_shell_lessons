@@ -45,6 +45,8 @@ It will take some effort to learn because it's a different way of interacting wi
   - advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines
   - disadvantages are its primarily textual nature and how cryptic its commands and operation can be
 - Advantages/disadvantages of GUI
+  - don't have to learn commands, choices easy to see
+  - stuck with interface design, limited to clicking to select
 
 
 ### Flexibility and automation
@@ -75,12 +77,14 @@ you are.
 
 # Files
 You'll need to download some files to use in this lesson:
-- open your shell (which can also be called terminal and command line)
+- open your shell (which can also be called terminal or command line)
   - on a Mac, go to Applications - Utilities - terminal
   - on Windows, you should have Git for Windows downloaded
     - go to Start/windows, find Git Bash, and open
     
- #### If you need help with the shell, put up a sticky and a helper will come by
+ #### Sticky check: 
+ If you need help, put up a yellow sticky and a helper will come by
+
 
 ## What to type
 - go to etherpad
@@ -90,3 +94,6 @@ You'll need to download some files to use in this lesson:
 > cd Desktop
 
 > git clone https://github.com/mleverance/uark-swc-files.git
+
+#### Sticky check:
+Put up a blue sticky when you finish 
