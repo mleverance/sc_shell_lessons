@@ -1,5 +1,5 @@
 # Working with Files and Directories
-Topics covered include:
+Questions we'll answer:
 - "How can I create, copy, and delete files and directories?"
 - "How can I edit files?"
 ---
