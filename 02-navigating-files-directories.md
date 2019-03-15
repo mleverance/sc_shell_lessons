@@ -1,12 +1,12 @@
-# Introduction
-In this section we're going to cover:
-- How to move around on my computer
-- How to see what files and directories I have
-- How to specify the location of a file or directory on my computer
+# Navigating Files and Directories
+
+Questions we'll answer:
+- How do I move around on my computer?
+- How do I see what files and directories I have?
+- How do I specify the location of a file or directory on my computer?
 ---
 
-## Navigating Files and Directories
-
+## Where are we?
 **Before we can use the shell for what it's really powerful at--automating tasks and improving our productivity--we need to become comfortable with navigating and manipulating our file system in the shell.**
 
 - The *file system* is the part of our operating system responsible for managing files and directories.
