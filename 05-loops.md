@@ -1,7 +1,7 @@
 # Loops
 teaching: 40 / 
 exercises: 10  
-questions:
+Questions we'll answer:
 - "How can I perform the same actions on many different files?"
 ---
 
@@ -45,10 +45,9 @@ Here's a simple example that displays the first three lines of each file in turn
 ~~~
 $ for filename in basilisk.dat unicorn.dat
 > do
->    head -n 3 $filename	# Indentation within the loop aids legibility
+>    head -n 3 $filename	
 > done
 ~~~
-{: .language-bash}
 
 ~~~
 COMMON NAME: basilisk
@@ -58,20 +57,17 @@ COMMON NAME: unicorn
 CLASSIFICATION: equus monoceros
 UPDATED: 1738-11-24
 ~~~
-{: .output}
 
-> ## Follow the Prompt
->
+> ## Let's break this down
+> ### Prompt
 > The shell prompt changes from `$` to `>` and back again as we were
 > typing in our loop. The second prompt, `>`, is different to remind
 > us that we haven't finished typing a complete command yet. A semicolon, `;`,
 > can be used to separate two commands written on a single line.
-{: .callout}
 
-> ## Indentation of code within a for loop
+> ### Indentation of code within a for loop
 > Note that it is common practice to indent the line(s) of code within a for loop.
 > The only purpose is to make the code easier to read -- it is not required for the loop to run.
-{: .callout}
 
 When the shell sees the keyword `for`,
 it knows to repeat a command (or group of commands) once for each item in a list.
@@ -109,51 +105,25 @@ Since the list was only two items, the shell exits the `for` loop.
 >
 > If *you* type `>` or `$` yourself, it is an instruction from you that
 > the shell should redirect output or get the value of a variable.
-{: .callout}
 
-When using variables it is also
-possible to put the names into curly braces to clearly delimit the variable
-name: `$filename` is equivalent to `${filename}`, but is different from
-`${file}name`. You may find this notation in other people's programs.
-
-We have called the variable in this loop `filename`
-in order to make its purpose clearer to human readers.
+We called the variable in this loop `filename`
+to make its purpose clearer to human readers.
 The shell itself doesn't care what the variable is called;
-if we wrote this loop as:
-
-~~~
-$ for x in basilisk.dat unicorn.dat
-> do
->    head -n 3 $x
-> done
-~~~
-{: .language-bash}
-
-or:
-
-~~~
-$ for temperature in basilisk.dat unicorn.dat
-> do
->    head -n 3 $temperature
-> done
-~~~
-{: .language-bash}
-
-it would work exactly the same way.
-*Don't do this.*
 Programs are only useful if people can understand them,
 so meaningless names (like `x`) or misleading names (like `temperature`)
 increase the odds that the program won't do what its readers think it does.
 
+
 > ## Variables in Loops
 >
-> This exercise refers to the `data-shell/molecules` directory.
+> This exercise refers to the `data-shell/molecules` directory.  
+> 
 > `ls` gives the following output:
 >
 > ~~~
 > cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > ~~~
-> {: .output}
+>
 >
 > What is the output of the following code?
 >
@@ -163,19 +133,8 @@ increase the odds that the program won't do what its readers think it does.
 > >    ls *.pdb
 > > done
 > ~~~
-> {: .language-bash}
 >
-> Now, what is the output of the following code?
 >
-> ~~~
-> $ for datafile in *.pdb
-> > do
-> >	ls $datafile
-> > done
-> ~~~
-> {: .language-bash}
->
-> Why do these two loops give different outputs?
 >
 > > ## Solution
 > > The first code block gives the same output on each iteration through
@@ -190,7 +149,7 @@ increase the odds that the program won't do what its readers think it does.
 > > >	ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > > > done
 > > ```
-> > {: .language-bash}
+> > 
 > >
 > > ```
 > > cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
@@ -200,23 +159,6 @@ increase the odds that the program won't do what its readers think it does.
 > > cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > > cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > > ```
-> > {: .output}
-> >
-> > The second code block lists a different file on each loop iteration.
-> > The value of the `datafile` variable is evaluated using `$datafile`,
-> > and then listed using `ls`.
-> >
-> > ```
-> > cubane.pdb
-> > ethane.pdb
-> > methane.pdb
-> > octane.pdb
-> > pentane.pdb
-> > propane.pdb
-> > ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
 
 > ## Limiting Sets of Files
 >
@@ -228,7 +170,7 @@ increase the odds that the program won't do what its readers think it does.
 > >    ls $filename 
 > > done
 > ~~~
-> {: .language-bash}
+> 
 >
 > 1.  No files are listed.
 > 2.  All files are listed.
@@ -238,29 +180,8 @@ increase the odds that the program won't do what its readers think it does.
 > > ## Solution
 > > 4 is the correct answer. `*` matches zero or more characters, so any file name starting with 
 > > the letter c, followed by zero or more other characters will be matched.
-> {: .solution}
->
-> How would the output differ from using this command instead?
->
-> ~~~
-> $ for filename in *c*
-> > do
-> >    ls $filename 
-> > done
-> ~~~
-> {: .language-bash}
->
-> 1.  The same files would be listed.
-> 2.  All the files are listed this time.
-> 3.  No files are listed this time.
-> 4.  The files `cubane.pdb` and `octane.pdb` will be listed.
-> 5.  Only the file `octane.pdb` will be listed.
->
-> > ## Solution
-> > 4 is the correct answer. `*` matches zero or more characters, so a file name with zero or more
-> > characters before a letter c and zero or more characters after the letter c will be matched.
-> {: .solution}
-{: .challenge}
+> >
+
 
 > ## Saving to a File in a Loop - Part One
 >
@@ -273,7 +194,7 @@ increase the odds that the program won't do what its readers think it does.
 >     cat $alkanes > alkanes.pdb
 > done
 > ~~~
-> {: .language-bash}
+> 
 >
 > 1.  Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb`,
 >     and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
@@ -287,35 +208,8 @@ increase the odds that the program won't do what its readers think it does.
 > > 1. The text from each file in turn gets written to the `alkanes.pdb` file.
 > > However, the file gets overwritten on each loop interation, so the final content of `alkanes.pdb`
 > > is the text from the `propane.pdb` file.
-> {: .solution}
-{: .challenge}
+> 
 
-> ## Saving to a File in a Loop - Part Two
->
-> Also in the `data-shell/molecules` directory, what would be the output of the following loop?
->
-> ~~~
-> for datafile in *.pdb
-> do
->     cat $datafile >> all.pdb
-> done
-> ~~~
-> {: .language-bash}
->
-> 1.  All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and
->     `pentane.pdb` would be concatenated and saved to a file called `all.pdb`.
-> 2.  The text from `ethane.pdb` will be saved to a file called `all.pdb`.
-> 3.  All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`
->     and `propane.pdb` would be concatenated and saved to a file called `all.pdb`.
-> 4.  All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`
->     and `propane.pdb` would be printed to the screen and saved to a file called `all.pdb`.
->
-> > ## Solution
-> > 3 is the correct answer. `>>` appends to a file, rather than overwriting it with the redirected
-> > output from a command.
-> > Given the output from the `cat` command has been redirected, nothing is printed to the screen.
-> {: .solution}
-{: .challenge}
 
 Let's continue with our example in the `data-shell/creatures` directory.
 Here's a slightly more complicated loop:
@@ -327,7 +221,11 @@ $ for filename in *.dat
 >     head -n 100 $filename | tail -n 20
 > done
 ~~~
-{: .language-bash}
+
+Reminder: 
+> If *you* type `>` or `$` yourself, it is an instruction from you that
+> the shell should redirect output or get the value of a variable.
+
 
 The shell starts by expanding `*.dat` to create the list of files it will process.
 The **loop body**
@@ -338,14 +236,12 @@ For example:
 ~~~
 $ echo hello there
 ~~~
-{: .language-bash}
 
 prints:
 
 ~~~
 hello there
 ~~~
-{: .output}
 
 In this case,
 since the shell expands `$filename` to be the name of a file,
