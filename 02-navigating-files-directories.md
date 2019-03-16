@@ -218,7 +218,7 @@ A relative path is a file path that is relative to the current working directory
 That is, when we use a relative path with a command like `ls` or `cd`, the program tries to find that location based on our current location in the file system.
 
 It's also possible to specify an *absolute path* to a directory by specifying its entire path from the root directory, which is indicated by the leading slash.
-Note that absolute paths are what is printed out by the `pwd` program.
+Note that absolute paths are what is printed out by `pwd`.
 
 ```sh
 $ pwd
