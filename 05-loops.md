@@ -9,20 +9,19 @@ Questions we'll answer:
 commands repeatedly. Similar to wildcards and tab completion, using loops also reduces the
 amount of typing (and typing mistakes).   
 
-We're going to learn about loops by modifying files, saving versions of the original, and renaming the copies.
-
-Let's navigate to the `creatures` directory. There are only has two example files here,
-but the principles can be applied to many many more files at once.
+Let's navigate to the `creatures` directory. There are only two example files in this directory,
+but the principles apply to many many more files at once.
 ```sh
 $ cd
 $ cd Desktop/data-shell/creatures
 $ ls
 $ basilisk.dat unicorn.dat
 ```
-We want to modify these files, but also save a version of the original files, naming the copies
+We're going to modify these files in the future, so we want to save a version of the original files, naming the copies
 `original-basilisk.dat` and `original-unicorn.dat`.
 
-Let's try the `cp` copy command:
+Let's try the `cp` copy command.  
+When we used it previously, we gave the command `cp` and entered the file name first and then the new file name the original is copied to, so we'll do the same thing here.  
 ~~~
 $ cp basilisk.dat unicorn.dat original-*.dat
 ~~~
@@ -108,30 +107,23 @@ Since the list was only two items, the shell exits the `for` loop.
 We called the variable in this loop `filename`
 to make its purpose clearer to human readers.
 The shell itself doesn't care what the variable is called;
-Programs are only useful if people can understand them,
-so meaningless names (like `x`) or misleading names (like `temperature`)
-increase the odds that the program won't do what its readers think it does.
+Programs are only useful if people can understand them.
 
-
+> ## Exercise 1
 > ## Variables in Loops
 >
 > This exercise refers to the `data-shell/molecules` directory.  
 > 
 > `ls` gives the following output:
 >
-> ~~~
 > cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
-> ~~~
->
 >
 > What is the output of the following code?
 >
-> ~~~
 > $ for datafile in *.pdb
 > > do
 > >    ls *.pdb
 > > done
-> ~~~
 >
 >
 >
@@ -251,14 +243,13 @@ we can solve it using this loop:
 ~~~
 $ for filename in *.dat
 > do
->     cp $filename original-$filename
+>     echo cp $filename original-$filename
 > done
 ~~~
 
 
 This loop runs the `cp` command once for each filename.
-The first time,
-when `$filename` expands to `basilisk.dat`,
+The first time, when `$filename` expands to `basilisk.dat`,
 the shell executes:
 
 ~~~
@@ -273,19 +264,7 @@ cp unicorn.dat original-unicorn.dat
 
 Since the `cp` command does not normally produce any output, it's hard to check 
 that the loop is doing the correct thing. By prefixing the command with `echo` 
-it is possible to see each command as it _would_ be executed. The following diagram 
-shows what happens when the modified script is executed, and demonstrates how the 
-judicious use of `echo` is a good debugging technique.
-
-![For Loop in Action](../fig/shell_script_for_loop_flow_chart.svg)
-
-
-> ## Beginning and End
->
-> We can move to the beginning of a line in the shell by typing `Ctrl-a`
-> and to the end using `Ctrl-e`.
-{: .callout}
-
+it is possible to see each command as it _would_ be executed.  
 
 > ## Those Who Know History Can Choose to Repeat It
 >
@@ -303,80 +282,16 @@ judicious use of `echo` is a good debugging technique.
 > 
 
 
-> ## Other History Commands
->
-> There are a number of other shortcut commands for getting at the history.
->
-> - `Ctrl-R` enters a history search mode "reverse-i-search" and finds the 
-> most recent command in your history that matches the text you enter next.
-> Press `Ctrl-R` one or more additional times to search for earlier matches.
-> - `!!` retrieves the immediately preceding command 
-> (you may or may not find this more convenient than using the up-arrow)
-> - `!$` retrieves the last word of the last command.
-> That's useful more often than you might expect: after
-> `bash goostats NENE01729B.txt stats-NENE01729B.txt`, you can type
-> `less !$` to look at the file `stats-NENE01729B.txt`, which is
-> quicker than doing up-arrow and editing the command-line.
-{: .callout}
-
-> ## Doing a Dry Run
->
-> A loop is a way to do many things at once --- or to make many mistakes at
-> once if it does the wrong thing. One way to check what a loop *would* do
-> is to `echo` the commands it would run instead of actually running them.
-> 
-> Suppose we want to preview the commands the following loop will execute
-> without actually running those commands:
->
-> ~~~
-> $ for file in *.pdb
-> > do
-> >   analyze $file > analyzed-$file
-> > done
-> ~~~
-> {: .language-bash}
->
-> What is the difference between the two loops below, and which one would we
-> want to run?
->
-> ~~~
-> # Version 1
-> $ for file in *.pdb
-> > do
-> >   echo analyze $file > analyzed-$file
-> > done
-> ~~~
-> {: .language-bash}
->
-> ~~~
-> # Version 2
-> $ for file in *.pdb
-> > do
-> >   echo "analyze $file > analyzed-$file"
-> > done
-> ~~~
-> {: .language-bash}
->
-> > ## Solution
-> > The second version is the one we want to run.
-> > This prints to screen everything enclosed in the quote marks, expanding the
-> > loop variable name because we have prefixed it with a dollar sign.
-> >
-> > The first version redirects the output from the command `echo analyze $file` to
-> > a file, `analyzed-$file`. A series of files is generated: `analyzed-cubane.pdb`,
-> > `analyzed-ethane.pdb` etc.
-> > 
-> > Try both versions for yourself to see the output! Be sure to open the 
-> > `analyzed-*.pdb` files to view their contents.
-> {: .solution}
-{: .challenge}
-
+> ## Exercise 2
 > ## Nested Loops
->
-> Suppose we want to set up up a directory structure to organize
+> 
+> Navigate to the `data-shell/molecules` directory.
+> 
+> Suppose we want to set up a directory structure to organize
 > some experiments measuring reaction rate constants with different compounds
-> *and* different temperatures.  What would be the
-> result of the following code:
+> *and* different temperatures.  
+>
+> Take a few minutes to work through this nested loop, and check the results in the directory when it's finished.
 >
 > ~~~
 > $ for species in cubane ethane methane
@@ -387,7 +302,7 @@ judicious use of `echo` is a good debugging technique.
 > >     done
 > > done
 > ~~~
-> {: .language-bash}
+> 
 >
 > > ## Solution
 > > We have a nested loop, i.e. contained within another loop, so for each species
@@ -395,5 +310,4 @@ judicious use of `echo` is a good debugging technique.
 > > temperatures, and creates a new directory for each combination.
 > >
 > > Try running the code for yourself to see which directories are created!
-> {: .solution}
-{: .challenge}
+
