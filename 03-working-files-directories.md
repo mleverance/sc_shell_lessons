@@ -134,43 +134,6 @@ $ ls
 draft.txt
 ~~~
 
-> ## Creating Files a Different Way
->
-> We have seen how to create text files using the `nano` editor.
-> Now, try the following command:
->
-> ~~~
-> $ touch my_file.txt
-> ~~~
->
->
-> 1.  What did the `touch` command do?
->     When you look at your current directory using the GUI file explorer,
->     does the file show up?
->
-> 2.  Use `ls -l` to inspect the files.  How large is `my_file.txt`?
->
-> 3.  When might you want to create a file this way?
->
-> > ## Solution
-> > 1.  The `touch` command generates a new file called `my_file.txt` in
-> >     your current directory.  You
-> >     can observe this newly generated file by typing `ls` at the 
-> >     command line prompt.  `my_file.txt` can also be viewed in your
-> >     GUI file explorer.
-> >
-> > 2.  When you inspect the file with `ls -l`, note that the size of
-> >     `my_file.txt` is 0 bytes.  In other words, it contains no data.
-> >     If you open `my_file.txt` using your text editor it is blank.
-> >
-> > 3.  Some programs do not generate output files themselves, but
-> >     instead require that empty files have already been generated.
-> >     When the program is run, it searches for an existing file to
-> >     populate with its output.  The touch command allows you to
-> >     efficiently generate a blank text file to be used by such
-> >     programs.
-> {: .solution}
-
 > ## What's In A Name?
 >
 > Two-part filenames are used most of the time to tell different kinds
@@ -301,6 +264,7 @@ thesis_backup:
 quotations.txt
 ```
 
+> ## Exercise 1
 > ## Renaming Files
 >
 > Suppose that you created a plain-text file in your current directory to contain a list of the
@@ -322,56 +286,8 @@ quotations.txt
 > > cannot be created.
 > > 4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names
 > > cannot be created.
-> {: .solution}
+> 
 
-
-> ## Moving and Copying
->
-> What is the output of the closing `ls` command in the sequence shown below?
->
-> ~~~
-> $ pwd
-> ~~~
-> {: .language-bash}
-> ~~~
-> /Users/jamie/data
-> ~~~
-> {: .output}
-> ~~~
-> $ ls
-> ~~~
-> {: .language-bash}
-> ~~~
-> proteins.dat
-> ~~~
-> {: .output}
-> ~~~
-> $ mkdir recombine
-> $ mv proteins.dat recombine/
-> $ cp recombine/proteins.dat ../proteins-saved.dat
-> $ ls
-> ~~~
-> {: .language-bash}
->
-> 1.   `proteins-saved.dat recombine`
-> 2.   `recombine`
-> 3.   `proteins.dat recombine`
-> 4.   `proteins-saved.dat`
->
-> > ## Solution
-> > We start in the `/Users/jamie/data` directory, and create a new folder called `recombine`.
-> > The second line moves (`mv`) the file `proteins.dat` to the new folder (`recombine`).
-> > The third line makes a copy of the file we just moved.  The tricky part here is where the file was
-> > copied to.  Recall that `..` means "go up a level", so the copied file is now in `/Users/jamie`.
-> > Notice that `..` is interpreted with respect to the current working
-> > directory, **not** with respect to the location of the file being copied.
-> > So, the only thing that will show using ls (in `/Users/jamie/data`) is the recombine folder.
-> >
-> > 1. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
-> > 2. Yes
-> > 3. No, see explanation above.  `proteins.dat` is located at `/Users/jamie/data/recombine`
-> > 4. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
-> {: .solution}
 
 
 ## Removing files and directories
@@ -394,32 +310,20 @@ $ ls quotes.txt
 ls: cannot access 'quotes.txt': No such file or directory
 ```
 
-> ## Deleting Is Forever
->
-> The Unix shell doesn't have a trash bin that we can recover deleted
-> files from (though most graphical interfaces to Unix do).  Instead,
-> when we delete files, they are unlinked from the file system so that
-> their storage space on disk can be recycled. Tools for finding and
-> recovering deleted files do exist, but there's no guarantee they'll
-> work in any particular situation, since the computer may recycle the
-> file's disk space right away.
-
+## Deleting Is Forever
+The Unix shell doesn't have a trash bin that we can recover deleted
+files from (though most graphical interfaces to Unix do).  
+Instead, when we delete files, they are unlinked from the file system so that
+their storage space on disk can be recycled.   
+Tools for finding and recovering deleted files do exist, but there's no guarantee they'll
+work in any particular situation, since the computer may recycle the
+file's disk space right away.
 
 > ## Using `rm` Safely
->
-> What happens when we execute `rm -i thesis_backup/quotations.txt`?
-> Why would we want this protection when using `rm`?
->
-> > ## Solution
-> > ```
-> > $ rm: remove regular file 'thesis_backup/quotations.txt'? y
-> > ```
-> > {: .language-bash}
-> > The `-i` flag will prompt before (every) removal (use <kbd>Y</kbd> to confirm deletion or <kbd>N</kbd> to keep the file).
-> > The Unix shell doesn't have a trash bin, so all the files removed will disappear forever.
-> > By using the `-i` flag, we have the chance to check that we are deleting only the files that we want to remove.
-> {: .solution}
-
+> The `-i` flag will prompt before (every) removal (use <kbd>Y</kbd> to confirm deletion or <kbd>N</kbd> to keep the file).
+> The Unix shell doesn't have a trash bin, so all the files removed will disappear forever.
+> By using the `-i` flag, we have the chance to check that we are deleting only the files that we want to remove.
+> 
 
 If we try to remove the `thesis` directory using `rm thesis`,
 we get an error message:
@@ -435,28 +339,35 @@ rm: cannot remove `thesis': Is a directory
 This happens because `rm` by default only works on files, not directories.
 
 `rm` can remove a directory *and all its contents* if we use the 
-recursive flag `-r`, and it will do so *without any confirmation prompts*:
-
-~~~
-$ rm -r thesis
-~~~
-
+recursive flag `-r`, and it will do so *without any confirmation prompts*  
 
 Given that there is no way to retrieve files deleted using the shell,
-`rm -r` *should be used with great caution* (you might consider adding the interactive flag `rm -r -i`).
+`rm -r` *should be used with great caution* so let's add the interactive flag `-i`.
+
+~~~
+$ rm -r -i thesis
+~~~
+
+Using `-i` prompts us to confirm whether or not we want to delete the file.
 
 ## Operations with multiple files and directories
 
 What if you need to copy or move several files at once? This can be done by providing a list of individual filenames, or specifying a naming pattern using wildcards.  
 
-### Using wildcards for accessing multiple files at once
-
-> ## Wildcards
+## Using wildcards for accessing multiple files at once
+> ### Wildcards
 >
-> `*` is a **wildcard**, which matches zero or more  characters.
+> `*` is a **wildcard**, which matches zero or more characters.
 > Let's consider the `data-shell/molecules` directory:
+> 
+> ```
+> $ ls *.pdb
+> ```
+> 
 > `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every
-> file that ends with '.pdb'. On the other hand, `p*.pdb` only matches
+> file that ends with '.pdb'. 
+>
+> On the other hand, `p*.pdb` only matches
 > `pentane.pdb` and `propane.pdb`, because the 'p' at the front only
 > matches filenames that begin with the letter 'p'.
 >
@@ -464,23 +375,13 @@ What if you need to copy or move several files at once? This can be done by prov
 > So `?ethane.pdb` would match `methane.pdb` whereas
 > `*ethane.pdb` matches both `ethane.pdb`, and `methane.pdb`.
 >
-> Wildcards can be used in combination with each other
+> Wildcards can be used in combination with each other  
 > e.g. `???ane.pdb` matches three characters followed by `ane.pdb`,
 > giving `cubane.pdb  ethane.pdb  octane.pdb`.
 >
-> When the shell sees a wildcard, it expands the wildcard to create a
-> list of matching filenames *before* running the command that was
-> asked for. As an exception, if a wildcard expression does not match
-> any file, Bash will pass the expression as an argument to the command
-> as it is. For example typing `ls *.pdf` in the `molecules` directory
-> (which contains only files with names ending with `.pdb`) results in
-> an error message that there is no file called `*.pdf`.
-> However, generally commands like `wc` and `ls` see the lists of
-> file names matching these expressions, but not the wildcards
-> themselves. It is the shell, not the other programs, that deals with
-> expanding wildcards, and this is another example of orthogonal design.
 
 
+> ## Exercise 2
 > ## List filenames matching a pattern
 >
 > When run in the `molecules` directory, which `ls` command(s) will
@@ -503,5 +404,5 @@ What if you need to copy or move several files at once? This can be done by prov
 >> `3.` fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`. This is the solution.
 >>
 >> `4.` only shows files starting with `ethane.`.
-> {: .solution}
+> 
 
