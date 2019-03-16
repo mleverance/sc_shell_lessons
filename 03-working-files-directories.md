@@ -355,30 +355,28 @@ Using `-i` prompts us to confirm whether or not we want to delete the file.
 What if you need to copy or move several files at once? This can be done by providing a list of individual filenames, or specifying a naming pattern using wildcards.  
 
 ## Using wildcards for accessing multiple files at once
-> ### Wildcards
->
-> `*` is a **wildcard**, which matches zero or more characters.
-> Let's consider the `data-shell/molecules` directory:
-> 
-> ```
-> $ ls *.pdb
-> ```
-> 
-> `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every
-> file that ends with '.pdb'. 
->
-> On the other hand, `p*.pdb` only matches
-> `pentane.pdb` and `propane.pdb`, because the 'p' at the front only
-> matches filenames that begin with the letter 'p'.
->
-> `?` is also a wildcard, but it only matches a single character.
-> So `?ethane.pdb` would match `methane.pdb` whereas
-> `*ethane.pdb` matches both `ethane.pdb`, and `methane.pdb`.
->
-> Wildcards can be used in combination with each other  
-> e.g. `???ane.pdb` matches three characters followed by `ane.pdb`,
-> giving `cubane.pdb  ethane.pdb  octane.pdb`.
->
+### Wildcards
+
+`*` is a **wildcard**, which matches zero or more characters.
+Let's consider the `data-shell/molecules` directory:
+ 
+```
+$ ls *.pdb
+```
+
+`*.pdb` matches `ethane.pdb`, `propane.pdb`, and every
+file that ends with '.pdb'.   
+
+On the other hand, `p*.pdb` only matches
+`pentane.pdb` and `propane.pdb`, because the 'p' at the front only
+matches filenames that begin with the letter 'p'.  
+
+`?` is also a wildcard, but it only matches a single character.  
+So `?ethane.pdb` would match `methane.pdb` whereas
+`*ethane.pdb` matches both `ethane.pdb`, and `methane.pdb`.  
+Wildcards can be used in combination with each other  
+e.g. `???ane.pdb` matches three characters followed by `ane.pdb`,
+giving `cubane.pdb  ethane.pdb  octane.pdb`.
 
 
 > ## Exercise 2
