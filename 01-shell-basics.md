@@ -9,10 +9,10 @@ At a high level, computers do four things:
 - Communicate with each other, and
 - Interact with us.
 
-They can do the last of these in many different ways, including direct brain-computer interfaces and speech recognition, using systems such as Alexa or Google Home.
-While such hardware interfaces are becoming more commonplace, most interaction is still done using screens, mice, touchpads and keyboards.
-Although most modern desktop operating systems communicate with their human users by means of windows, icons and pointers, these software technologies didn’t become widespread until the 1980s.
-Before this time, most people used *line printers.*
+They can do the last of these in many different ways, including direct brain-computer interfaces and speech recognition, using systems such as Alexa or Google Home.  
+While such hardware interfaces are becoming more commonplace, most interaction is still done using screens, mice, touchpads and keyboards.  
+Although most modern desktop operating systems communicate with their human users by means of windows, icons and pointers, these software technologies didn’t become widespread until the 1980s.  
+Before this time, most people used *line printers.*  
 These devices only allowed input and output of the letters, numbers, and punctuation found on a standard keyboard, so programming languages and software interfaces had to be designed around that constraint.
 
 **Let's introduce two terms.**
@@ -21,30 +21,37 @@ Command line interface(CLI) and graphical user interface (GUI)
 
 - *command-line interface,* or CLI is an interface that developed from keyboard inputs
 >The heart of a CLI is a *read-evaluate-print loop,* or REPL: when the user types a command and then presses the Enter (or Return) key, the computer reads it, executes it, and prints its output in the shell window.
-The user then types another command, and so on until the user logs off.
-The shell is a **command-line interface** which is useful for complex, purpose-specific things.
-It uses a simple vocabulary of commands that are typed in by the user.
+The user then types another command, and so on until the user logs off.  
+The shell is a **command-line interface** which is useful for complex, purpose-specific things.  
+It uses a simple vocabulary of commands that are typed in by the user.  
 
-- *graphical user interface,* or GUI, which has windows, icons and pointers. They are easy to learn and fantastic for simple tasks where "click" translates into "do the thing I want". It relies on wanting a simple set of things, and having programs that can do those things, like click farms set up to click on paid advertising links.
+- *graphical user interface,* or GUI, which has windows, icons and pointers.  
+> They are easy to learn and fantastic for simple tasks where "click" translates into "do the thing I want".  
+It relies on wanting a simple set of things, and having programs that can do those things, like click farms set up to click on paid advertising links.
 
 ### The Shell
 The Shell is a program which runs other programs rather than doing calculations itself.
 The most popular Unix shell is Bash, (the Bourne Again SHell ---  
 it's derived from a shell written by Stephen Bourne).
-Bash is the default shell on most modern implementations of Unix
-and in most packages that provide Unix-like tools for Windows.
+Bash is the default shell on most modern implementations of Unix and in most packages that provide Unix-like tools for Windows.
 
-### Is CLI difficult to use?
-If you haven't used the shell before, it may seem clunky and unrelatable at first. 
-It will take some effort to learn because it's a different way of interacting with the computer than what you're most likely used to. With a GUI you get set choices and you select one. With a **command line interface** (CLI) the choices are combinations of commands and parameters, and because they aren't presented to you, you have to learn a few, like learning vocabulary in a new language. But the plus is that a small number of commands gets you a long way, and we'll cover those essential few today.
+### You might be wondering... Is CLI difficult to use?
+If you haven't used the shell before, it may seem clunky and unrelatable at first.  
+It will take some effort to learn because it's a different way of interacting with the computer than what you're most likely used to.  
+With a GUI you get set choices and you select one.  
+With a **command line interface** (CLI) the choices are combinations of commands and parameters, and because they aren't presented to you, you have to learn a few, like learning vocabulary in a new language.  
+But the plus is that a small number of commands gets you a long way, and we'll cover those essential few today.
 > Some places you might see a CLI are webserver, remote computer, copying/moving large files, high performance computing or cluster computing 
 
 ### Activity
-- Talk to one of your neighbors and use the etherpad to enter answers for these:
-- Advantages/disadvantages of CLI
+- Talk to a neighbor and use the etherpad to enter answers for these:
+- **Advantages/disadvantages of CLI**
+- **Advantages/disadvantages of GUI**
+
+- CLI
   - advantages are its high action-to-keystroke ratio, its support for automating repetitive tasks, and its capacity to access networked machines
   - disadvantages are its primarily textual nature and how cryptic its commands and operation can be
-- Advantages/disadvantages of GUI
+- GUI
   - don't have to learn commands, choices easy to see
   - stuck with interface design, limited to clicking to select
 
