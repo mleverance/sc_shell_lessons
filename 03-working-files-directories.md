@@ -404,3 +404,5 @@ giving `cubane.pdb  ethane.pdb  octane.pdb`.
 >> `4.` only shows files starting with `ethane.`.
 > 
 
+# Key points
+review working with files & directories slide
