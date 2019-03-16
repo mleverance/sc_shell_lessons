@@ -29,11 +29,12 @@ Mary Leverance
 
 ## Getting help
 - With interactive learning, you might need help, or we might want to check the room to see if everyone is good
-- The sticky notes will help us do this
-  - Used like flags at the top of your laptop for either getting help in real time from helpers or letting us know you're good
+- Instead of raising your hand for help, you'll see a blue & yellow sticky note at your seat
+- The sticky notes will be signals for the instructors and helpers
+  - Used like flags at the top of your laptop
     - Blue: I'm cool, ready to proceed
-    - Yellow: think of it like a caution or slow down signal, "please assist"
-  - We'll do periodic sticky checks
+    - Yellow: think of it like a caution or slow down signal, "helper, please assist"
+  - We'll do periodic sticky checks where we ask for feedback
 
 ## Collaboration
 - Collaborative note-taking on the etherpad
