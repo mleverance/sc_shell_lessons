@@ -44,8 +44,9 @@ But the plus is that a small number of commands gets you a long way, and we'll c
 > Some places you might see a CLI are webserver, remote computer, copying/moving large files, high performance computing or cluster computing 
 
 ### Activity
-- Talk to a neighbor and use the etherpad to enter answers for these:
-- **Advantages/disadvantages of CLI**
+Talk to a neighbor and use the etherpad to enter answers for these:  
+
+- **Advantages/disadvantages of CLI**  
 - **Advantages/disadvantages of GUI**
 
 - CLI
