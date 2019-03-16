@@ -88,7 +88,8 @@ creatures/  data/  molecules/  north-pacific-gyre/  notes.txt  pizza.cfg  solar.
 > or other special characters, you should surround the name in quotes (`""`).
 
 
-Since we've just created the `thesis` directory, there's nothing in it yet:
+Since we've just created the `thesis` directory, there's nothing in it yet:  
+We'll use the -F flag and tab completion when we type 'thesis'
 
 ~~~
 $ ls -F thesis
@@ -96,13 +97,7 @@ $ ls -F thesis
 
 
 ### Create a text file
-A note on text editors... for this workshop we'll use the text editor called nano which functions inside the shell. When you're working on your own you might want to use a different one, like emacs or vim on Unix systems or Notepad++ on Windows or Atom on Windows/Mac.
-
-> #### Which Editor?
-> If you use an editor outside of the shell (meaning other than nano,
-> you'll need to know where it searches
-> for and saves files. If you start it from the shell, it will (probably)
-> use your current working directory as its default location, but be aware of where it's saving files. 
+A note on text editors... for this workshop we'll use the text editor called nano which functions inside the shell. When you're working on your own you might want to use a different one, like emacs or vim on Unix systems or Notepad++ on Windows or Atom on Windows/Mac.   
 
 Let's change our working directory to `thesis` using `cd`,
 then run a text editor called Nano to create a file called `draft.txt`:
