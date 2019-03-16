@@ -113,8 +113,7 @@ $ ls -F Desktop
 > > The -l flag makes ls use a long listing format, showing not only the file/directory names but also additional 
 > > information such as the file size and the time of its last modification. If you use both the -h flag and the -l flag, 
 > > this makes the file size “human readable”, i.e. displaying something like 5.3K instead of 5369.
-> {: .solution}
-{: .challenge}
+> 
 
 ### Changing the Current Working Directory
 
@@ -265,8 +264,7 @@ $ cd nor (press tab)
 > > 7. Yes: unnecessarily complicated, but correct.
 > > 8. Yes: shortcut to go back to the user's home directory.
 > > 9. Yes: goes up one level.
-> {: .solution}
-{: .challenge}
+> 
 
 # key points:
 - show slide 2
