@@ -238,6 +238,8 @@ $ cd nor (press tab)
 ```
 
 ## Activity
+We'll do a couple activities using the etherpad to reinforce what we've just learned.  
+> ## Exercise 1
 > ## Absolute vs Relative Paths
 >
 > Starting from `/Users/amanda/data/`,
@@ -265,6 +267,24 @@ $ cd nor (press tab)
 > > 8. Yes: shortcut to go back to the user's home directory.
 > > 9. Yes: goes up one level.
 > 
+> ## Exercise 2
+> ## Relative Path Resolution
+>
+> Using the filesystem diagram http://swcarpentry.github.io/shell-novice/fig/filesystem-challenge.svg, if `pwd` displays `/Users/thing`,
+> what will `ls -F ../backup` display?
+>
+> 1.  `../backup: No such file or directory`
+> 2.  `2012-12-01 2013-01-08 2013-01-27`
+> 3.  `2012-12-01/ 2013-01-08/ 2013-01-27/`
+> 4.  `original/ pnas_final/ pnas_sub/`
+>
+>
+> > ## Solution
+> > 1. No: there *is* a directory `backup` in `/Users`.
+> > 2. No: this is the content of `Users/thing/backup`,
+> >    but with `..` we asked for one level further up.
+> > 3. No: see previous explanation.
+> > 4. Yes: `../backup/` refers to `/Users/backup/`.
 
 # key points:
 - show slide 2
