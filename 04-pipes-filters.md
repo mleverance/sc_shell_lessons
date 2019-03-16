@@ -1,13 +1,15 @@
 # Pipes and Filters
 teaching: 25 /
-exercises: 10 
-> questions:
-> - How can I combine existing commands to do new things?
+exercises: 10  
+
+Questions we'll answer:
+- How can I combine existing commands to do new things?
 ---
 
 Now that we know a few basic commands,
 we can look at a powerful feature of the shell:
 the ease with which it lets us combine existing programs in new ways.  
+
 We'll start with a directory called `molecules`
 that contains six files describing some simple organic molecules.
 The `.pdb` extension indicates that these files are in Protein Data Bank format,
