@@ -289,5 +289,5 @@ We'll do a couple activities using the etherpad to reinforce what we've just lea
 > > 4. Yes: `../backup/` refers to `/Users/backup/`.
 
 # key points:
-- show slide 2
+review navigating files & directories and file naming slides
 
