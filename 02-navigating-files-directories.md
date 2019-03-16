@@ -101,8 +101,10 @@ The `ls` command accepts as an argument the path to another directory.
 $ ls -F Desktop
 ```
 
-**Your output from this command should be a list of the files on your desktop and should include the folder data-shell. Take a moment to confirm that is the case.**
+**Your output from this command should be a list of the files on your desktop and should include the folder data-shell. Take a moment to confirm that is the case.**  
 
+Let's go to the etherpad where we'll answer a question about `ls` flags
+> ## Exercise 1
 > ## Exploring more ls flags
 >
 > You can also use two flags at the same time. What does the command ls do when used with the -l flag? 
@@ -239,7 +241,7 @@ $ cd nor (press tab)
 
 ## Activity
 We'll do a couple activities using the etherpad to reinforce what we've just learned.  
-> ## Exercise 1
+> ## Exercise 2
 > ## Absolute vs Relative Paths
 >
 > Starting from `/Users/amanda/data/`,
@@ -267,7 +269,7 @@ We'll do a couple activities using the etherpad to reinforce what we've just lea
 > > 8. Yes: shortcut to go back to the user's home directory.
 > > 9. Yes: goes up one level.
 > 
-> ## Exercise 2
+> ## Exercise 3
 > ## Relative Path Resolution
 >
 > Using the filesystem diagram http://swcarpentry.github.io/shell-novice/fig/filesystem-challenge.svg, if `pwd` displays `/Users/thing`,
