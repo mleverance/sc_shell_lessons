@@ -2,7 +2,7 @@
 teaching: 25 /
 exercises: 10  
 
-Questions we'll answer:
+#### Questions we'll answer:
 - How can I combine existing commands to do new things?
 ---
 
