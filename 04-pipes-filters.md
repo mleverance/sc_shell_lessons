@@ -81,7 +81,7 @@ It's an easy question to answer when there are only six files,
 but what if there were 6000?
 Our first step toward a solution is to run a command that tells the shell to **redirect** the command's output
 to a file instead of printing it to the screen.
-> The greater than symbol tells the shell to **redirect**
+> The greater than symbol tells the shell to **redirect**  
 > The file we specify receives the output
 > - If the file doesn't exist, the shell will create it
 > - If the file does exist, it will be overwritten, so be sure you're using an accurate filename
@@ -130,7 +130,7 @@ We see the number of lines for each file next to the filename
 > ## Output Page by Page
 >
 > We'll continue to use `cat` in this lesson, for convenience and consistency,
-> but it has the disadvantage that it always dumps the whole file onto your screen.
+> but it has the disadvantage that it always prints the whole file onto your screen.
 > More useful in practice is the command `less`,
 > which you use with `less lengths.txt`.
 > This displays a screenful of the file, and then stops.
@@ -149,7 +149,6 @@ instead, it sends the sorted result to the screen:
 $ sort -n lengths.txt
 ~~~
 
-
 ~~~
   9  methane.pdb
  12  ethane.pdb
@@ -160,7 +159,6 @@ $ sort -n lengths.txt
 107  total
 ~~~
 
-
 We can put the sorted list of lines in another temporary file called `sorted-lengths.txt`
 by putting `> sorted-lengths.txt` after the command.
 > Tip: don't redirect to the same file, use a different filename
@@ -169,11 +167,11 @@ by putting `> sorted-lengths.txt` after the command.
 $ sort -n lengths.txt > sorted-lengths.txt
 ~~~
 
-Once we've done that, we can run another command called `head` to get the first 10 lines in `sorted-lengths.txt`:
-'head' prints the first 10 lines of a file (or files, if you're looking at multiple) to the output you specify (the default is the terminal, but we saw how you can print to a file using the > command)
+Once we've done that, we can run another command called `head` which prints the first 10 lines of a file (or files, if you're using a wildcard)  
+to the output you specify (the default is the terminal, but we saw how you can print to a file using the redirect command)  
 
 We're going to use `-n 1` with `head` to tell it that we only want the first line of the file;
-`-n 20` would get the first 20, and so on.
+`-n 20` would get the first 20 lines, and so on.
 
 ~~~
 $ head -n 1 sorted-lengths.txt
@@ -185,41 +183,36 @@ Results in the first line of the file
 ~~~
 
 > ### Side Note:
-> there is also a command called `tail` that will print the last 10 lines of the file or files
+> there's a command called `tail` that will print the last 10 lines of the file or files  
 
-> ## What Does `>>` Mean?
->
-> We have seen the use of **redirect** `>`, but there is a similar operator `>>` which works slightly differently. 
-> It **redirects** AND **appends** to a file.
-> Another new command is `echo`, which means what it sounds like - echoing information back to you.
-> We can use the `echo` command to print text. It's a handy way to create customized output in your terminal.
->
-> ~~~
-> $ echo The echo command prints text
-> ~~~
-> 
-> ~~~
-> The echo command prints text
-> ~~~
-> 
->
-> We know that using redirect will put the command's output into a file instead of printing it on the screen,
-> so let's do that and look at what's in the file:
-> ~~~
-> $ echo hello > test.txt
-> $ cat test.txt
-> $ hello
-> ~~~
-> 
-> Now we'll use the **append** command to add to that file
->
-> ~~~
-> $ echo goodbye >> test.txt
-> ~~~
-> 
-> How do you view the contents of the file?
-> What do you see when you look at it?
-> 
+## What Does `>>` Mean?
+
+We have seen the use of **redirect** `>`, but there is a similar operator `>>` (double angles) which works slightly differently.  
+It **redirects** AND **appends** to a file.  
+Another new command is `echo`, which means what it sounds like - echoing information back to you.  
+We can use the `echo` command to print text in the shell. It's a handy way to create customized output in your terminal.  
+~~~
+$ echo The echo command prints text
+~~~
+
+~~~
+The echo command prints text
+~~~
+
+We know that using redirect will put the command's output into a file instead of printing it on the screen,so let's do that and look at what's in the file:
+~~~
+$ echo hello > test.txt
+$ cat test.txt
+$ hello
+~~~ 
+
+Now we'll use the **append** command to add to that file
+~~~
+$ echo goodbye >> test.txt
+~~~
+
+How do you view the contents of the file?
+What do you see when you look at it?  
 
 ## New concept: Pipes
 An advantage of the shell is the ability to run commands on the same line instead of separately. Kind of like nesting functions in math.  
@@ -229,7 +222,6 @@ For example, we can run `sort` and `head` together:
 ~~~
 $ sort -n lengths.txt | head -n 1
 ~~~
-
 
 ~~~
   9  methane.pdb
@@ -263,7 +255,7 @@ $ wc -l *.pdb | sort -n
  107 total
 ~~~
 
-And now we send the output of this pipe, through another pipe, to `head`, so that the full pipeline becomes:
+And now we send the output of this pipe, through another pipe, to `head`, and the full pipeline becomes:
 > ### Tip
 > Using the up arrow will scroll through your previous commands so you don't have to retype the whole thing here
 ~~~
@@ -276,6 +268,7 @@ $ wc -l *.pdb | sort -n | head -n 1
 ~~~
 
 
+> ## Exercise 1
 > ## Piping Commands Together
 >
 > In our current directory, we want to find the 3 files which have the least number of
@@ -296,7 +289,7 @@ $ wc -l *.pdb | sort -n | head -n 1
 > > Try it in the `data-shell/molecules` directory!  
   
 
-## Show slide: processes using the shell
+## Show .ppt slide: processes using the shell
 Here's what actually happens behind the scenes when we create a pipe.
 When a computer runs a program --- any program --- it creates a **process**
 in memory to hold the program's software and its current state.  
@@ -327,9 +320,7 @@ they read from standard input,
 do something with what they've read,
 and write to standard output.  
 
-
-
-
+> ## Exercise 2
 > ## Pipe Reading Comprehension
 >
 > A file called `animals.txt` (in the `data-shell/data` folder) contains the following data:
@@ -365,9 +356,9 @@ and write to standard output.
 > > 2012-11-06,deer
 > > 2012-11-05,raccoon
 > > ```
-> >
 
-
+# Key points
+review pipes & filters slide
 
 
 ## EXERCISE IF TIME
