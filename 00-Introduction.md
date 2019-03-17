@@ -29,7 +29,7 @@ Mary Leverance
 
 ## Getting help
 - With interactive learning, you might need help, or we might want to check the room to see if everyone is good
-- Instead of raising your hand for help, you'll see a blue & yellow sticky note at your seat
+- You'll see a blue & yellow sticky note at your seat
 - The sticky notes will be signals for the instructors and helpers
   - Used like flags at the top of your laptop
     - Blue: I'm cool, ready to proceed
