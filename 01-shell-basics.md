@@ -10,10 +10,7 @@ At a high level, computers do four things:
 - Interact with us.
 
 They can do the last of these in many different ways, including direct brain-computer interfaces and speech recognition, using systems such as Alexa or Google Home.  
-While such hardware interfaces are becoming more commonplace, most interaction is still done using screens, mice, touchpads and keyboards.  
-Although most modern desktop operating systems communicate with their human users by means of windows, icons and pointers, these software technologies didn’t become widespread until the 1980s.  
-Before this time, most people used *line printers.*  
-These devices only allowed input and output of the letters, numbers, and punctuation found on a standard keyboard, so programming languages and software interfaces had to be designed around that constraint.
+These interfaces are becoming more commonplace, most interaction is still done using screens, mice, touchpads and keyboards.  
 
 **Let's introduce two terms.**
 
@@ -43,8 +40,15 @@ With a **command line interface** (CLI) the choices are combinations of commands
 But the plus is that a small number of commands gets you a long way, and we'll cover those essential few today.
 > Some places you might see a CLI are webserver, remote computer, copying/moving large files, high performance computing or cluster computing 
 
+### Why use the shell?
+The power of the shell is combining existing tools into powerful
+pipelines and handling large volumes of data automatically. Sequences of
+commands can be written into a *script*, improving the reproducibility of
+workflows and allowing you to repeat them easily.  
+If you can run a script that saves you days of computational work, it's a better choice.
+
 ### Activity
-Talk to a neighbor and use the etherpad to enter answers for these:  
+Talk with a neighbor and take three minutes with the etherpad to enter answers for these:  
 
 - **Advantages/disadvantages of CLI**  
 - **Advantages/disadvantages of GUI**
@@ -55,18 +59,6 @@ Talk to a neighbor and use the etherpad to enter answers for these:
 - GUI
   - don't have to learn commands, choices easy to see
   - stuck with interface design, limited to clicking to select
-
-
-### Flexibility and automation
-
-The grammar of a shell allows you to combine existing tools into powerful
-pipelines and handle large volumes of data automatically. Sequences of
-commands can be written into a *script*, improving the reproducibility of
-workflows and allowing you to repeat them easily.
-
-In addition, the command line is often the easiest way to interact with remote machines and supercomputers.
-Familiarity with the shell is near essential to run a variety of specialized tools and resources
-including high-performance computing systems.
 
 
 ### What does it look like?
