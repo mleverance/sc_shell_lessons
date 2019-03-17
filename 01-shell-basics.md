@@ -98,16 +98,15 @@ You'll need to download some files to use in this lesson:
 - go to etherpad to see the information to type next to your prompt
 - this will put the data files into your c:\users\yourname directory
 
-> $ git clone https://github.com/mleverance/uark-swc-files.git
-
 - now we want to put the files on your desktop as well
 - type 
-> $ cd Desktop
+> $ cd Desktop  
 > $ git clone https://github.com/mleverance/uark-swc-files.git
 
 - go to your desktop
 - open the uark-swc-files folder
-- move data-shell folder to your desktop - we don't want it to stay nested in the uark directory
+- copy data-shell folder to your desktop
+> cp -r uark-swc-files/data-shell .
 
 - if you're having trouble with git, follow this link to download the zip file
 - https://swcarpentry.github.io/shell-novice/data/data-shell.zip
