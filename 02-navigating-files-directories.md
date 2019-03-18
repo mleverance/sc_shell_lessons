@@ -240,7 +240,7 @@ $ cd nor (press tab)
 ```
 
 ## Activity
-We'll do a couple activities using the etherpad to reinforce what we've just learned.  
+Go to the etherpad line ___ to reinforce what we've just learned.  
 > ## Exercise 2
 > ## Absolute vs Relative Paths
 >
@@ -269,6 +269,8 @@ We'll do a couple activities using the etherpad to reinforce what we've just lea
 > > 8. Yes: shortcut to go back to the user's home directory.
 > > 9. Yes: goes up one level.
 > 
+>
+> SKIP FOR TIME
 > ## Exercise 3
 > ## Relative Path Resolution
 >
