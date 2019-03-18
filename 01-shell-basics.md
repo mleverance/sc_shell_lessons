@@ -48,7 +48,8 @@ workflows and allowing you to repeat them easily.
 If you can run a script that saves you days of computational work, it's a better choice.
 
 ### Activity
-Talk with a neighbor and take three minutes with the etherpad to enter answers for these:  
+Talk with a neighbor and take two minutes with the etherpad to enter answers for these:
+If someone else has already written what you were going to enter in the etherpad, you can put a + next to it
 
 - **Advantages/disadvantages of CLI**  
 - **Advantages/disadvantages of GUI**
@@ -76,34 +77,41 @@ you are.
 - When you type commands, you *don't type the prompt*, only the commands that follow it.
 
 # Files
-You'll need to download some files to use in this lesson:
-- open your shell (which can also be called terminal or command line)
-  - on a Mac, go to Applications - Utilities - terminal
-  - on Windows, you should have Git for Windows downloaded
-    - go to Start/windows, find Git Bash, and open
+You'll need to download some files to use in this lesson.  
+I'm going to explain according to your OS.  
+Linux users
+- open Bash from the applications menu or search bar
+Mac users
+- go to Applications - Utilities - terminal
+Windows users, you should have Git for Windows downloaded. I'm on Windows so you can follow what I'm doing:
+- go to your desktop
+- right click
+- select Git Bash Here
+- a terminal window will open
     
  #### Sticky check: 
  If you need help, put up a yellow sticky and a helper will come by
 
 
-## What to type
-- go to etherpad to see the information to type next to your prompt
-- this will put the data files into your c:\users\yourname directory
+## File download
+Everyone:
+- at your prompt, type `cd Desktop`
+  - if you get a message like mine that says "no such file or directory", that is OK
+- now type `pwd`
+  - you should see a string printed that ends with Desktop
+  - if you don't, put up a yellow sticky so a helper can assist
+We're ready to download files now
+- go to the etherpad line ___ and copy the following
+- git clone https://github.com/mleverance/uark-swc-files.git
+  - Windows users: if you copy and then right click in your shell window, it will paste the information for you
+  - Mac/Linux: you can copy/paste
+Press enter/return, you'll see the files load, and the cursor is back at the prompt
+- look at your desktop
+- there is now a folder there called uark-swc-files
+- the commands you enter in the shell are a different way of creating files, and we're going to talk about that more next
 
-- now we want to put the files on your desktop as well
-- type 
-> $ cd Desktop  
-> $ git clone https://github.com/mleverance/uark-swc-files.git
+### Sticky check
+Put up your blue sticky if you see the uark-swc-files folder on your desktop
 
-- go to your desktop
-- open the uark-swc-files folder
-- copy data-shell folder to your desktop
-> cp -r uark-swc-files/data-shell .
-
-- if you're having trouble with git, follow this link to download the zip file
-- https://swcarpentry.github.io/shell-novice/data/data-shell.zip
-- extract the data-shell folder to your Desktop
-- Windows 10 users: open your file manager and put the folder in c:\users\yourname\Desktop, not the virtual desktop
-
-#### Sticky check:
-Put up a blue sticky when the data-shell directory is on your desktop 
+> if you're having trouble with git, follow this link to download the zip file
+> https://swcarpentry.github.io/shell-novice/data/data-shell.zip
