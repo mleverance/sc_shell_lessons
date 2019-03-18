@@ -280,6 +280,8 @@ it is possible to see each command as it _would_ be executed.
 > $ history | tail -n 5
 > ~~~
 > 
+> Save your history to a file!
+> $ history >> my_history.txt
 
 
 > ## Exercise 2
